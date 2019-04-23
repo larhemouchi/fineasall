@@ -19,7 +19,7 @@
 
                                 @if ($errors->has('login')  )
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('login') }}</strong>
                                     </span>
                                 @endif
 
