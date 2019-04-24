@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Theatre
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        /*
+        $theatres = Theatre::get(9);
+
+        return $theatres;
+        */
+
+        return view('home', compact('theatres') );
     }
 }

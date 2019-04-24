@@ -6,7 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Illuminate\Support\Facades\Crypt;
 class RegisterController extends Controller
 {
     /*
@@ -48,7 +48,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'login' => 'required|string|max:255',            
+            'pseudo' => 'required|string',            
             'password' => 'required|string|min:6|confirmed',
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
@@ -67,15 +67,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
+
+        $enc_pseudo = Crypt::encryptString( $data['pseudo'] );
+
+
         return User::create([
-            'login' => $data['login'],
+            'pseudo' => $enc_pseudo,
             'password' => bcrypt($data['password']),
-   
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
             'sex' => $data['sex'],
             'email' => $data['email'],
-             'tel' => $data['tel'],
+            'tel' => $data['tel'],
         ]);
     }
 }

@@ -11,15 +11,15 @@
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('login') ? ' has-error' : '' }}">
-                            <label for="login" class="col-md-4 control-label">Login</label>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Adresse E-Mail</label>
 
-                             <div class="col-md-6">
-                                <input id="login" type="text" class="form-control" name="login" value="{{ old('login') }}" required autofocus>
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
-                                @if ($errors->has('login'))
+                                @if ($errors->has('email'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('login') }}</strong>
+                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -39,6 +39,7 @@
                             </div>
                         </div>
 
+
                         <div class="form-group">
                             <label for="password-confirm" class="col-md-4 control-label">Confirmer Password</label>
 
@@ -46,6 +47,26 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+
+                        <hr />
+
+                        <div class="form-group{{ $errors->has('pseudo') ? ' has-error' : '' }}">
+                            <label for="pseudo" class="col-md-4 control-label">pseudo</label>
+
+                             <div class="col-md-6">
+                                <input id="pseudo" type="text" class="form-control" name="pseudo" value="{{ old('pseudo') }}" required autofocus>
+
+                                @if ($errors->has('pseudo'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('pseudo') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        
+
+                        
 
 
 
@@ -82,7 +103,8 @@
                             <label for="sex" class="col-md-4 control-label">Sex</label>
 
                             <div class="col-md-6">
-                                <input id="sex" type="text" class="form-control" name="sex" value="{{ old('sex') }}" required autofocus>
+                                {{ Form::select('sex', [True => 'Homme', False => 'Femme et autres' ], old('sex'), ['Ton sex' => 'Pick a size...', 'required' => true, 'class' => 'form-control']) }}
+
 
                                 @if ($errors->has('sex'))
                                     <span class="help-block">
@@ -92,19 +114,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Adresse E-Mail</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        
 
 
   <div class="form-group{{ $errors->has('tel') ? ' has-error' : '' }}">

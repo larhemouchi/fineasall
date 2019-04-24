@@ -1,0 +1,38 @@
+#Ce que jai fait
+
+changing login to pseudo
+
+adding crypt to pseudo
+
+adding seed to user
+
+handle sex True 	( combo box )
+
+Adding permission package, 
+
+
+adding superuser role
+
+creating theatre model, resource, factory, seed, controller
+
+changing theatre.description 2 desc
+
+adding usability.decore.colors
+
+
+
+
+
+
+
+
+
+---------------------------RESOURCE
+https://github.com/spatie/laravel-permission#database-seeding
+https://laravel-news.com/learn-to-use-model-factories-in-laravel-5-1
+https://github.com/spatie/laravel-permission#database-seeding
+
+https://flatuicolors.com/palette/fr
+
+https://github.com/larhemouchi/tfe_reservation/blob/master/database/migrations/2019_02_12_094626_create_pieces_theatres_table.php
+

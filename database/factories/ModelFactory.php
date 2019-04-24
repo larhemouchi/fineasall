@@ -12,6 +12,8 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+
+/*
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -21,4 +23,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
+});
+
+*/
+
+
+$factory->define(App\Theatre::class, function (Faker\Generator $faker) {
+
+	$desc = $faker->unique()->sentence(5);
+	$title = explode(' ',trim($desc))[0];
+	$slug = str_slug($title, '-');
+
+	return [
+	        'titre' => $faker->sentence(2),
+	        'slug' => $faker->unique()->slug,
+	        'desc' => $desc,
+	    ];
 });
