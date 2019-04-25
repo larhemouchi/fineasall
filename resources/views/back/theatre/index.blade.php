@@ -11,6 +11,9 @@ Modifier les informations d'un théatre
       <div class="container-fluid">
         <div class="row">
           <div class="col-xs-12">
+
+            @forelse( $theatres as $theatre )
+
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">{{ $theatre->titre }}</h5>
@@ -44,6 +47,19 @@ Modifier les informations d'un théatre
 
               </div>
             </div>
+
+            @empty
+
+            <div class="alert alert-warning" role="alert">
+              EMPTY
+            </div>
+
+            @endforelse
+
+
+            @if( count($theatres) > 0  )
+              {!! $theatres->links() !!}
+            @endif()
 
           </div>
 

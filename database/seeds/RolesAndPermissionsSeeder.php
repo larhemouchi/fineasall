@@ -47,13 +47,11 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $superAdmin->assignRole('super_admin');
 
-        $normal = User::find(1);
-
         $regular = Role::create(['name' => 'regular']);
 
         $regular_user = User::find(2);
 
-        $regular->assignRole('regular');
+        $regular_user->assignRole('regular');
 
 
 

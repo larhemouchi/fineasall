@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Theatre
+use App\Theatre;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

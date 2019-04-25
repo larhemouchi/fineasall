@@ -20,6 +20,10 @@ changing theatre.description 2 desc
 adding usability.decore.colors
 
 
+CRUD THEATRE
+
+Categories
+
 
 
 
@@ -35,4 +39,7 @@ https://github.com/spatie/laravel-permission#database-seeding
 https://flatuicolors.com/palette/fr
 
 https://github.com/larhemouchi/tfe_reservation/blob/master/database/migrations/2019_02_12_094626_create_pieces_theatres_table.php
+
+
+
 

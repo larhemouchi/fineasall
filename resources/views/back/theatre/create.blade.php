@@ -18,7 +18,7 @@ Modifier les informations d'un théatre
                 <p class="card-text">
 
 
-                  {!! Form::model($theatre, ['route' => ['theatres.update', $theatre->id ], 'method' => 'PUT' ]) !!}
+                  {!! Form::open(['route' => ['theatres.store' ], 'method' => 'POST' ]) !!}
 
 				  <div class="form-group">
 				    <label for="titre">Titre</label>
@@ -43,7 +43,6 @@ Modifier les informations d'un théatre
 
 
                 </p>
-
 
               </div>
             </div>

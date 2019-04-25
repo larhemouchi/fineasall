@@ -60,7 +60,7 @@
 <div class="row">
 
 	
-	@foreach( $theatres as $theatre )
+	@forelse( $theatres as $theatre )
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#0a3d62"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ $theatre->titre }}</text></svg>
@@ -69,15 +69,27 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="{{ route('theatres.show', $theatre->slug) }}" type="button" class="btn btn-sm btn-outline-secondary">View</a>
-                  <a href="{{ route('theatres.edit', $theatre->slug) }}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                  @can('modify_theater')
+					  <a href="{{ route('theatres.edit', $theatre->id) }}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+				  @endcan
+                  
                 </div>
                 <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
         </div>
+
+    @empty
         
-    @endforeach
+    @endforelse
+
+    @if( count($theatres) > 0  )
+    	<div class="col-md-12">
+    		<a href="{{ route('theatres.index') }}" type="button" class="btn btn-sm btn-outline-secondary  pull-right">Voire Tout</a>
+    	</div>
+    	
+    @endif
 
 </div>
 </div>

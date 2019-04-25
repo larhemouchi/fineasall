@@ -14,7 +14,9 @@ class TheatreController extends Controller
      */
     public function index()
     {
-        return Theatre::all();
+        $theatres = Theatre::paginate(9);
+
+        return view('back.theatre.index', compact('theatres') );
     }
 
     /**
@@ -24,7 +26,7 @@ class TheatreController extends Controller
      */
     public function create()
     {
-        //
+        return view('back.theatre.create');
     }
 
     /**
@@ -35,7 +37,20 @@ class TheatreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $theatre = Theatre::create([
+            'titre' => $request->titre,
+            'desc' => $request->desc,
+            'slug' => str_slug($request->titre, '-')
+        ]);
+
+        if($theatre){
+
+            return redirect()->route('theatres.show', $theatre->slug);
+
+        }else{
+            return ':/';
+        }
     }
 
     /**
@@ -44,9 +59,18 @@ class TheatreController extends Controller
      * @param  \App\Theatre  $theatre
      * @return \Illuminate\Http\Response
      */
-    public function show(Theatre $theatre)
+    public function show($slug)
     {
-        //
+
+        $theatre = Theatre::where('slug', $slug )->first();
+
+        if($theatre){
+
+        }else{
+            return redirect()->route('welcome');
+        }
+
+        return view('back.theatre.show', compact( 'theatre' ) );
     }
 
     /**
@@ -55,11 +79,12 @@ class TheatreController extends Controller
      * @param  \App\Theatre  $theatre
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit(Theatre $theatre)
     {
-        $theatre = Theatre::where('slug', $slug)->get();
 
-        return view('back.theatre.edit', compact( $theatre ) );
+        //return  $theatre ;
+
+        return view('back.theatre.edit', compact( 'theatre' ) );
     }
 
     /**
@@ -71,7 +96,14 @@ class TheatreController extends Controller
      */
     public function update(Request $request, Theatre $theatre)
     {
-        //
+        $theatre->titre = $request->titre;
+        $theatre->desc = $request->desc;
+        $theatre->slug = str_slug($request->titre, '-');
+
+        $theatre->update();
+
+        return redirect()->route('theatres.show', $theatre->slug);
+
     }
 
     /**
@@ -82,6 +114,12 @@ class TheatreController extends Controller
      */
     public function destroy(Theatre $theatre)
     {
-        //
+
+        Theatre::destroy($theatre->id);
+
+        return 'DESTROYED SUCCEFULLY';
+
+        
+        
     }
 }
