@@ -1,0 +1,1 @@
+$(':input[type="number"]').addClass('form-control').attr('required', true).attr('step', 'any');

@@ -17,6 +17,7 @@ class CreateCatsTable extends Migration
         Schema::create('cats', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
+            $table->string('lettre')->unique();
             $table->double('taux');
 
             NestedSet::columns($table);

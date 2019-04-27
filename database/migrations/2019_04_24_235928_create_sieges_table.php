@@ -15,6 +15,26 @@ class CreateSiegesTable extends Migration
     {
         Schema::create('sieges', function (Blueprint $table) {
             $table->increments('id');
+
+
+            $table->integer('cat_id')->unsigned()->index();
+            $table->foreign('cat_id')
+              ->references('id')
+              ->on('cats')
+              ->onDelete('cascade');
+
+
+            $table->integer('num')->nullable();
+            $table->string('map')->nullable();
+
+
+              $table->integer('salle_id')->unsigned()->index();
+            $table->foreign('salle_id')
+              ->references('id')
+              ->on('salles')
+              ->onDelete('cascade');
+
+
             $table->timestamps();
         });
     }

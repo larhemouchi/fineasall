@@ -40,16 +40,27 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'modify_theater']);
         Permission::create(['name' => 'delete_theater']);
 
+        
+
         $role_sadmin = Role::create(['name' => 'super_admin']);
-        $role_sadmin->givePermissionTo(Permission::all());
+        //$role_sadmin->givePermissionTo(Permission::all());
+
+
+        $role_sadmin->givePermissionTo(['add_theater','modify_theater', 'delete_theater' ]);
 
         $superAdmin = User::find(1);
 
         $superAdmin->assignRole('super_admin');
 
+
+        Permission::create(['name' => 'reserve']);
+
         $regular = Role::create(['name' => 'regular']);
 
+        $regular->givePermissionTo(['reserve' ]);
+
         $regular_user = User::find(2);
+
 
         $regular_user->assignRole('regular');
 

@@ -16,6 +16,12 @@
 <link href="{{ asset('/admin/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" >
 
 
+
+
+
+    @yield('styles')
+
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -103,5 +109,12 @@
 </main>
 <script src="{{ asset('/admin/plugins/jquery/jquery.js') }}"></script>
 <script src="{{ asset('/admin/plugins/bootstrap/js/bootstrap.js') }}"></script>
+
+
+
+@yield('scripts')
+
+
+
 </body>
 </html>

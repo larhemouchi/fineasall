@@ -35,8 +35,22 @@ $factory->define(App\Theatre::class, function (Faker\Generator $faker) {
 	$slug = str_slug($title, '-');
 
 	return [
-	        'titre' => $faker->sentence(2),
-	        'slug' => $faker->unique()->slug,
+	        'titre' => $title,
+	        'slug' => $slug,
 	        'desc' => $desc,
+	    ];
+});
+
+
+$factory->define(App\Salle::class, function (Faker\Generator $faker) {
+
+	$adress = $faker->unique()->address();
+	$nom = $faker->unique()->sentence();
+	$slug = str_slug($nom, '-');
+
+	return [
+	        'nom' => $nom,
+	        'slug' => $slug,
+	        'adress' => $adress,
 	    ];
 });

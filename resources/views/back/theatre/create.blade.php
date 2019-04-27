@@ -20,6 +20,8 @@ Modifier les informations d'un théatre
 
                   {!! Form::open(['route' => ['theatres.store' ], 'method' => 'POST' ]) !!}
 
+                  {{ csrf_field() }}
+
 				  <div class="form-group">
 				    <label for="titre">Titre</label>
 

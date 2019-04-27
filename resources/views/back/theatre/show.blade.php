@@ -34,11 +34,15 @@ Modifier les informations d'un théatre
 
                 {!! Form::open(['method' => 'DELETE', 'route' => ['theatres.destroy', $theatre->id]]) !!}
 
+                {{ csrf_field() }}
+
                 <button class="card-link">Suprimer</button>
+
+                {!! Form::close() !!}
 
                 @endhasrole
 
-                {!! Form::close() !!}
+                
 
 
 

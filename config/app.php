@@ -27,6 +27,33 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | NOTRE CONFIGURATION
+    |--------------------------------------------------------------------------
+    |
+    | 
+    */
+
+    'limit_argent' => 15,
+    'schema_salle' => 'bbbbbbbbbbbb_bbbbbbbbbbbb0bbbbbbbbbbbb_bbbbbbbbbbbb0dddddddddddd_dddddddddddd0_nnnnnnnnnnn_nnnnnnnnnnn0__nnnnnnnnnn_nnnnnnnnnn0___nnnnnnnnn_nnnnnnnnn0____nnnnnnnn_nnnnnnnn0_____nnnnnnn_nnnnnnn0______vvvvvv_vvvvvv0______aaaaaa_aaaaaa',
+    /*
+
+    'schema_salle' => [
+                    'bbbbbbbbbbbb_bbbbbbbbbbbb',
+                    'bbbbbbbbbbbb_bbbbbbbbbbbb',
+                    'dddddddddddd_dddddddddddd',
+                    '_nnnnnnnnnnn_nnnnnnnnnnn',
+                    '__nnnnnnnnnn_nnnnnnnnnn',
+                    '___nnnnnnnnn_nnnnnnnnn',
+                    '____nnnnnnnn_nnnnnnnn',
+                    '_____nnnnnnn_nnnnnnn',
+                    '______vvvvvv_vvvvvv',
+                    '______aaaaaa_aaaaaa',
+                    ],
+
+                    */
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -37,6 +64,8 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
+
+
 
     'debug' => env('APP_DEBUG', true),
 
@@ -252,6 +281,8 @@ return [
         //our FACADE
 
         'Decore' => App\Helpers\Usability\Decore::class,
+        'Math' => App\Helpers\Usability\Math::class,
+        'Money' => App\Helpers\Usability\Money::class,
 
     ],
 

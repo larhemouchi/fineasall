@@ -24,6 +24,23 @@ CRUD THEATRE
 
 Categories
 
+Installing nestedset as category package
+
+seeding categories
+
+limit dargent ////// config.app |-> 'limit_argent' => 25,
+
+SCHEMA CHAISES
+
+SALLE: CHAISES _COMPLET
+
+DONNé LES INFO PAR AXIOS A LES CHAISES
+
+
+CHAISES -> CHECKOUT -> CONFIRM -> 
+
+
+suprimer dateheure reservation je sais pourquoi en la fait :O
 
 
 
@@ -41,5 +58,20 @@ https://flatuicolors.com/palette/fr
 https://github.com/larhemouchi/tfe_reservation/blob/master/database/migrations/2019_02_12_094626_create_pieces_theatres_table.php
 
 
+https://github.com/lazychaser/laravel-nestedset
+
+
+composer require laravel-validation-rules/credit-card
+
+https://www.jqueryscript.net/chart-graph/Full-featured-Seating-Chart-Plugin-With-jQuery-Seat-Charts.html
+
+
+
+
+
+--------------------------SAVED LINKS-----------------
+
+
+https://github.com/lmehra/simplepay
 
 

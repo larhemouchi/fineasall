@@ -1,4 +1,4 @@
-@extends('back.layouts.index')
+@extends('front.layouts.index')
 
 @section('title')
 Modifier les informations d'un théatre
@@ -6,13 +6,18 @@ Modifier les informations d'un théatre
 
 @section('content')
 
+  <hr class="featurette-divider">
+<h3 class="text-center col-xs-12"> Toutes les pieces de théatre</h3>
+  <hr class="featurette-divider">
+      <div class="container">
 
-    <div class="content">
-      <div class="container-fluid">
+          
         <div class="row">
-          <div class="col-xs-12">
 
             @forelse( $theatres as $theatre )
+          <div class="col-md-6">
+
+
 
             <div class="card">
               <div class="card-body">
@@ -37,23 +42,34 @@ Modifier les informations d'un théatre
 
                 {!! Form::open(['method' => 'DELETE', 'route' => ['theatres.destroy', $theatre->id]]) !!}
 
+                {{ csrf_field() }}
+
                 <button class="card-link">Suprimer</button>
+
+                {!! Form::close() !!}
 
                 @endhasrole
 
-                {!! Form::close() !!}
+                
 
 
 
               </div>
             </div>
 
+
+
+
+
+          </div>
+          <!-- /.col-md-6 -->
+
             @empty
 
             <div class="alert alert-warning" role="alert">
               EMPTY
             </div>
-
+          
             @endforelse
 
 
@@ -61,13 +77,11 @@ Modifier les informations d'un théatre
               {!! $theatres->links() !!}
             @endif()
 
-          </div>
 
-          <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+      </div><!-- /.container -->
+
 
 @endsection
 

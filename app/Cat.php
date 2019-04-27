@@ -10,5 +10,14 @@ class Cat extends Model
 {
     use NodeTrait;
 
-    
+
+    protected $fillable = ['nom', 'lettre', 'taux'];
+
+    protected function sieges(){
+
+    	$this->hasMany('App\Siege');
+
+    }
+
+
 }

@@ -1,12 +1,46 @@
 <?Php
 namespace App\Helpers\Usability;
 
+
+
+
+/*
+
+function cacul_pourcentage($nombre,$total,$pourcentage)
+{ 
+  $resultat = ($nombre/$total) * $pourcentage;
+  return round($resultat); // Arrondi la valeur
+}
+*/
+
+class Math {
+
+	public static function pourcentage($nombre,$pourcentage)
+	{ 
+	  $resultat = $nombre * $pourcentage/100;
+	  return round($resultat); // Arrondi la valeur
+	}
+
+}
+
+class Money {
+
+	public static function limit($money)
+	{ 
+
+		return $money > config('app.limit_argent')? $money : config('app.limit_argent') ;
+
+	}
+
+}
+
 class Decore {
     /**
      * @param int $user_id User-id
      * 
      * @return string
      */
+
     public static function colors($item = null) {
 
 	    $colors = [
@@ -42,7 +76,10 @@ class Decore {
 
 		if( $item == null){
 	          return $colors;
-	      }else{
+	      }elseif($item == 'random'){
+	      	return $colors[array_rand($colors)];
+	      }
+	      else{
 	          return $colors[$item];
 	      }
 
