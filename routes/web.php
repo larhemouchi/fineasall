@@ -40,8 +40,7 @@ Route::get('/res-sieges/{rep}', 'ResController@init')->name('res.init');
 
 Route::get('/salle-sieges-info/{rep}', 'SalleController@siegesInfo')->name('salles.sieges-info');
 
-// A SUPRIMER APRES
-Route::get('/salle-sieges/{slug}', 'SalleController@sieges')->name('salles.sieges');
+
 Route::resource('salles', 'SalleController');
 
 

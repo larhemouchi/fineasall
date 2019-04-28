@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Theatre;
 use Illuminate\Http\Request;
-
+use Img;
 class TheatreController extends Controller
 {
     /**
@@ -38,8 +38,12 @@ class TheatreController extends Controller
     public function store(Request $request)
     {
 
+
+        $img = Img::store( $request, 'theatre' , 'titre');
+
         $theatre = Theatre::create([
             'titre' => $request->titre,
+            'img' => $img,
             'desc' => $request->desc,
             'slug' => str_slug($request->titre, '-')
         ]);
@@ -96,11 +100,24 @@ class TheatreController extends Controller
      */
     public function update(Request $request, Theatre $theatre)
     {
+
+        if( $request->hasFile('img') ){
+            Img::delete($theatre,'theatre', 'titre');
+        }
+
+        $img = Img::store( $request, 'theatre' , 'titre');
+
+
+        $theatre->img = $img;
+
+
+
         $theatre->titre = $request->titre;
         $theatre->desc = $request->desc;
         $theatre->slug = str_slug($request->titre, '-');
 
-        $theatre->update();
+        $updated = $theatre->update();
+
 
         return redirect()->route('theatres.show', $theatre->slug);
 
@@ -115,9 +132,17 @@ class TheatreController extends Controller
     public function destroy(Theatre $theatre)
     {
 
+        Img::delete($theatre,'theatre', 'titre');
+
         Theatre::destroy($theatre->id);
 
-        return 'DESTROYED SUCCEFULLY';
+
+        $message = 'DESTROYED SUCCEFULLY';
+        $state = 'success';
+
+        return view('back.layouts.message', compact( 'message', 'state' ));
+
+
 
         
         

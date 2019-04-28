@@ -1,14 +1,16 @@
 @extends('back.layouts.index')
 
 @section('title')
-Modifier les informations d'un théatre
+{{$salle->nom}}
 @endsection
 
 @section('content')
 
-
+  <hr class="featurette-divider">
+<h3 class="text-center col-xs-12"> {{ $salle->nom }}</h3>
+  <hr class="featurette-divider">
     <div class="content">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
           <div class="col-xs-12">
             <div class="card">
@@ -23,7 +25,7 @@ Modifier les informations d'un théatre
 
                 </p>
 
-                <a href="{{ route( 'salles.sieges', $salle->slug ) }}" class="card-link">Voire sieges</a>
+
 
                 @hasrole('super_admin')
 

@@ -15,6 +15,129 @@ Modifier les informations d'un théatre
 <style>
 
 
+/*
+a {
+  color: #b71a4c;
+}
+
+.front-indicator {
+  //width: 145px;
+  //margin: 5px 32px 15px 32px;
+  background-color: #f6f6f6;  
+  color: #adadad;
+  text-align: center;
+  padding: 3px;
+  border-radius: 5px;
+}
+.wrapper {
+  //width: 100%;
+  text-align: center;
+  margin-top:150px;
+}
+.container {
+  margin: 0 auto;
+  //width: 500px;
+  text-align: left;
+}
+.booking-details {
+  float: left;
+  text-align: left;
+  //margin-left: 35px;
+  font-size: 12px;
+  position: relative;
+ //height: 401px;
+}
+*/
+.booking-details h2 {
+ // margin: 25px 0 20px 0;
+  font-size: 17px;
+}
+.booking-details h3 {
+  //margin: 5px 5px 0 0;
+  font-size: 14px;
+}
+
+
+div.seatCharts-cell {
+  color: #182C4E;
+ height: 25px;
+ width: 25px;
+  line-height: 25px;
+  
+}
+div.seatCharts-seat {
+  color: #FFFFFF;
+  cursor: pointer;  
+}
+div.seatCharts-row {
+  //height: 35px;
+}
+div.seatCharts-seat.available {
+  background-color: #B9DEA0;
+
+}
+div.seatCharts-seat.available.first-class {
+ //background: url(vip.png); 
+  background-color: #3a78c3;
+}
+div.seatCharts-seat.focused {
+  background-color: #76B474;
+}
+div.seatCharts-seat.selected {
+  background-color: #E6CAC4;
+}
+div.seatCharts-seat.unavailable {
+  background-color: #472B34;
+}
+div.seatCharts-container {
+  border-right: 1px dotted #adadad;
+  //width: 200px;
+  //padding: 20px;
+  //float: left;
+}
+div.seatCharts-legend {
+  //padding-left: 0px;
+  //position: absolute;
+  bottom: 16px;
+}
+ul.seatCharts-legendList {
+  padding-left: 0px;
+}
+span.seatCharts-legendDescription {
+  margin-left: 5px;
+  line-height: 30px;
+}
+
+
+.checkout-button {
+  //display: block;
+  //margin: 10px 0;
+  font-size: 14px;
+}
+
+
+#selected-seats {
+  //max-height: 90px;
+  overflow-y: scroll;
+  overflow-x: none;
+  //: 170px;
+}
+
+
+@foreach($cats as $cat)
+
+
+  {{ '.'.$cat->nom.'.available'.'{' }}
+
+
+    {{ 'background-color : '. Decore::colorsCats($cat->nom) .' !important;' }}
+
+  {{ '}' }}
+
+
+
+@endforeach
+
 
 </style>
 
@@ -30,59 +153,21 @@ Modifier les informations d'un théatre
 @section('content')
 
   <hr class="featurette-divider">
-<h3 class="text-center col-xs-12"> Toutes les salles</h3>
+<h3 class="text-center col-xs-12"> Toutes les sieges</h3>
   <hr class="featurette-divider">
       <div class="container">
 
           
         <div class="row">
 
-
-                  <div id="seat-map">
-      <div class="front-indicator">Front</div>
-    </div>
-        </div>
-
-
-
-        <div class="row">
-
-          <div class="col-md-6">
-
-
-
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title"></h5>
-
-
-
-                <p class="card-text">
-
-
-
-
-                  
-
-
-                </p>
-
-
-                
-
-                <hr />
-
-
-
-
-
-
-
-
-              </div>
+          <div class="col-md-9">
+            <div id="seat-map">
+              <div class="front-indicator">Front</div>
             </div>
           </div>
-          <div class="col-md-6">
+
+
+          <div class="col-md-3">
 
                         <div class="card">
               <div class="card-body">
@@ -97,7 +182,20 @@ Modifier les informations d'un théatre
       <ul id="selected-seats">
       </ul>
       Total: <b>$<span id="total">0</span></b>
+
+
+
+      {!! Form::open(['method' => 'POST', 'route' => ['res.checkout', $rep->id ]]) !!}
+      {{ csrf_field() }}
+      {{ Form::hidden('checkout', '{}', [ 'id' => 'checkout_input']) }}
+
+
       <button class="checkout-button">Checkout &raquo;</button>
+
+      {!! Form::close() !!}
+
+
+
       <div id="legend"></div>
     </div>
 
@@ -168,21 +266,34 @@ Modifier les informations d'un théatre
 
 $(document).ready(function() {
 
-  axios.get('/salle-sieges-info/{{ $salle->slug }}/1')
+  $checkout_input = $('#checkout_input');
+
+  console.log('{{ $rep->id }}');
+
+  axios.get('/salle-sieges-info/{{ $rep->id }}')
   .then(function (response) {
     // handle success
     console.log(response);
 
-    var seats = response.data ;
+    var seats = response.data.models ;
+
+
     var items = [] ;
 
+    var deja_res = response.data.deja_res;
+
     console.log( items );
+
+    console.log( 'deja_res' );
+    console.log( deja_res );
 
     /*var items_keys = Object.keys(seats);
     console.log(items_keys);
     */
 
     for (var prop in seats) {
+
+
       items.push( [prop, 'available', seats[prop]['category'] ] );
       items.push( [prop, 'unavailable', seats[prop]['category'] + ' ' +'Booked' ] );
     }
@@ -234,10 +345,15 @@ $(document).ready(function() {
         },
         click: function () {
           if (this.status() == 'available') {
+
+            price = this.data().price;
+            id = this.settings.id;
+            cat = this.data().category;
+            label = this.settings.label;
             //let's create a new <li> which we'll add to the cart items
-            $('<li>'+this.data().category+' Seat # '+this.settings.label+': <b>$'+this.data().price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
-              .attr('id', 'cart-item-'+this.settings.id)
-              .data('seatId', this.settings.id)
+            $('<li>'+cat+' Seat # '+label+': <b>$'+price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
+              .attr('id', 'cart-item-'+id)
+              .data('seatId', id)
               .appendTo($cart);
             
             /*
@@ -247,17 +363,79 @@ $(document).ready(function() {
              * 'selected'. This is why we have to add 1 to the length and the current seat price to the total.
              */
             $counter.text(sc.find('selected').length+1);
-            $total.text(recalculateTotal(sc)+this.data().price);
+
+
+
+            $total.text(recalculateTotal(sc)+ price );
+            /*
+
+            alert('price' + this.data().price);
+
+            alert('id | map' + this.settings.id);
+
+            alert( 'cat' + this.data().category );
+
+            */
+
+
+            /*
+
+
             
+
+
+            */
+
+            past_state = JSON.parse( $checkout_input.val() );
+
+            past_state[id] = new Object();
+
+            past_state[id].price = price;
+
+            past_state[id].cat = cat;
+
+            past_state[id].num = label;
+
+            $checkout_input.val(  JSON.stringify( past_state ) );
+
+            //console.log( $checkout_input.val() );
+
             return 'selected';
+
+
+
           } else if (this.status() == 'selected') {
+
+
+            /*price = this.data().price;
+            
+            id = this.settings.id;
+            cat = this.data().category;
+            label = this.settings.label
+            console.log(price, id, cat, label);
+*/
             //update the counter
             $counter.text(sc.find('selected').length-1);
             //and total
             $total.text(recalculateTotal(sc)-this.data().price);
+
+            $('#cart-item-'+this.settings.id).remove();
+
+            
           
             //remove the item from our cart
-            $('#cart-item-'+this.settings.id).remove();
+            
+
+            past_state = JSON.parse($checkout_input.val());
+
+            delete past_state[this.settings.id];
+
+            $checkout_input.val(  JSON.stringify( past_state ) );
+
+            /*
+            */
+
+
           
             //seat has been vacated
             return 'available';
@@ -277,7 +455,7 @@ $(document).ready(function() {
       });
 
       //let's pretend some seats have already been booked
-      sc.get(['1_2', '8_9']).status('unavailable');
+      sc.get(deja_res).status('unavailable');
 
 
 

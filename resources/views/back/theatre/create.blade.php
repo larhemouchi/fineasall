@@ -18,7 +18,7 @@ Modifier les informations d'un théatre
                 <p class="card-text">
 
 
-                  {!! Form::open(['route' => ['theatres.store' ], 'method' => 'POST' ]) !!}
+                  {!! Form::open(['route' => ['theatres.store' ], 'method' => 'POST',  'files' => true ]) !!}
 
                   {{ csrf_field() }}
 
@@ -34,6 +34,13 @@ Modifier les informations d'un théatre
 				    {!! Form::textarea('desc', null, ['class' => 'form-control', 'id' => 'desc' ]) !!}
 
 				  </div>
+
+          <div class="form-group">
+            <label for="img">IMG</label>
+
+            {!! Form::file('img', ['class' => 'form-control', 'id' => 'img' ]) !!}
+
+          </div>
 
 
 

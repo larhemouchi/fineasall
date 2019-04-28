@@ -100,7 +100,7 @@ class SalleController extends Controller
     {
         $salle->nom = $request->nom;
         $salle->adress = $request->adress;
-        $salle->slug = str_slug($request->titre, '-');
+        $salle->slug = str_slug($request->nom, '-');
 
         $salle->update();
 
@@ -118,14 +118,6 @@ class SalleController extends Controller
         Salle::destroy($salle->id);
 
         return 'DESTROYED SUCCEFULLY';
-    }
-
-
-    public function sieges($slug)
-    {
-        //dd( json_encode( explode("0", config('app.schema_salle') ) ) );
-        $salle = Salle::where('slug', $slug)->first();
-        return view('back.salle.sieges.show', compact( 'salle' ) );
     }
 
 

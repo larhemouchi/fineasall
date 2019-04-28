@@ -17,6 +17,7 @@ class CreateTheatresTable extends Migration
             $table->increments('id');
 
             $table->string('slug')->unique();
+            $table->string('img')->nullable();
             $table->string('titre');
             $table->text('desc');
 

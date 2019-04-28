@@ -1,8 +1,10 @@
 <?Php
 namespace App\Helpers\Usability;
 
+use Illuminate\Http\Request;
 
 
+use File;
 
 /*
 
@@ -12,6 +14,73 @@ function cacul_pourcentage($nombre,$total,$pourcentage)
   return round($resultat); // Arrondi la valeur
 }
 */
+
+class Img {
+
+	public static function store(Request $request, $model_name, $name)
+	{ 
+
+
+
+
+        if ($request->hasFile('img')) {
+
+
+            $img = $request->file('img');
+
+            $folder = '/uploads/'.$model_name.'/';
+
+            $img_name = str_slug($request->input($name));
+
+
+            //dd($filePath);
+
+            $img->move(public_path().$folder,$img_name.'.'.$img->getClientOriginalExtension());
+
+
+            return $img_name. '.' . $img->getClientOriginalExtension();
+
+
+        }else{
+        	return '';
+        }
+
+	  
+	}
+
+
+
+
+	public static function delete($model,$model_name, $name )
+	{
+
+
+		if($model->img != ''){
+
+
+			$folder = '/uploads/'.$model_name.'/';
+
+			//File::delete($folder. $model->img );
+
+			$path = public_path().$folder.$model->img;
+
+			if( file_exists($path) ){
+
+				unlink($path);
+
+			} 
+
+			
+			
+			
+
+		}
+
+	  
+	}
+
+
+}
 
 class Math {
 
