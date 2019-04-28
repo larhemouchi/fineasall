@@ -88,8 +88,10 @@ class ResController extends Controller
     public function init(Rep $rep){
 
 
+        $cats = Cat::where('lettre', '!=', 'x')->get();
 
-        return view('back.res.sieges.showing', compact( 'rep' ) );
+
+        return view('back.res.sieges.showing', compact( 'rep', 'cats' ) );
 
 
     }

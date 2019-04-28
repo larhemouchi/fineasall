@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Crypt;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+
 class RegisterController extends Controller
 {
     /*
@@ -73,7 +77,7 @@ class RegisterController extends Controller
         $enc_pseudo = Crypt::encryptString( $data['pseudo'] );
 
 
-        return User::create([
+        $user = User::create([
             'pseudo' => $enc_pseudo,
             'password' => bcrypt($data['password']),
             'nom' => $data['nom'],
@@ -82,5 +86,12 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'tel' => $data['tel'],
         ]);
+
+
+        $user->assignRole('regular');
+
+
+
+        return $user;
     }
 }

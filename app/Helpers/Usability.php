@@ -85,4 +85,34 @@ class Decore {
 
 
     }
+
+
+    public static function colorsCats($item) {
+
+    	switch ($item) {
+		    case 'DERIERE':
+		        return '#079992';
+		        break;
+		    case 'ANDICAPE':
+		        return '#0a3d62';
+		        break;
+		    case 'DERIERE':
+		        return '#b71540';
+		        break;
+		    case 'NORMAL':
+		        return '#78e08f';
+		        break;
+		    case 'VIP':
+		        return '#f6b93b';
+		        break;
+
+		    case 'BALCON':
+		        return '#4a69bd';
+		        break;
+
+		}
+
+		
+
+    }
 }

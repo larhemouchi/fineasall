@@ -15,6 +15,129 @@ Modifier les informations d'un théatre
 <style>
 
 
+/*
+a {
+  color: #b71a4c;
+}
+
+.front-indicator {
+  //width: 145px;
+  //margin: 5px 32px 15px 32px;
+  background-color: #f6f6f6;  
+  color: #adadad;
+  text-align: center;
+  padding: 3px;
+  border-radius: 5px;
+}
+.wrapper {
+  //width: 100%;
+  text-align: center;
+  margin-top:150px;
+}
+.container {
+  margin: 0 auto;
+  //width: 500px;
+  text-align: left;
+}
+.booking-details {
+  float: left;
+  text-align: left;
+  //margin-left: 35px;
+  font-size: 12px;
+  position: relative;
+ //height: 401px;
+}
+*/
+.booking-details h2 {
+ // margin: 25px 0 20px 0;
+  font-size: 17px;
+}
+.booking-details h3 {
+  //margin: 5px 5px 0 0;
+  font-size: 14px;
+}
+
+
+div.seatCharts-cell {
+  color: #182C4E;
+ height: 25px;
+ width: 25px;
+  line-height: 25px;
+  
+}
+div.seatCharts-seat {
+  color: #FFFFFF;
+  cursor: pointer;  
+}
+div.seatCharts-row {
+  //height: 35px;
+}
+div.seatCharts-seat.available {
+  background-color: #B9DEA0;
+
+}
+div.seatCharts-seat.available.first-class {
+ //background: url(vip.png); 
+  background-color: #3a78c3;
+}
+div.seatCharts-seat.focused {
+  background-color: #76B474;
+}
+div.seatCharts-seat.selected {
+  background-color: #E6CAC4;
+}
+div.seatCharts-seat.unavailable {
+  background-color: #472B34;
+}
+div.seatCharts-container {
+  border-right: 1px dotted #adadad;
+  //width: 200px;
+  //padding: 20px;
+  //float: left;
+}
+div.seatCharts-legend {
+  //padding-left: 0px;
+  //position: absolute;
+  bottom: 16px;
+}
+ul.seatCharts-legendList {
+  padding-left: 0px;
+}
+span.seatCharts-legendDescription {
+  margin-left: 5px;
+  line-height: 30px;
+}
+
+
+.checkout-button {
+  //display: block;
+  //margin: 10px 0;
+  font-size: 14px;
+}
+
+
+#selected-seats {
+  //max-height: 90px;
+  overflow-y: scroll;
+  overflow-x: none;
+  //: 170px;
+}
+
+
+@foreach($cats as $cat)
+
+
+  {{ '.'.$cat->nom.'.available'.'{' }}
+
+
+    {{ 'background-color : '. Decore::colorsCats($cat->nom) .' !important;' }}
+
+  {{ '}' }}
+
+
+
+@endforeach
+
 
 </style>
 
@@ -191,6 +314,8 @@ $(document).ready(function() {
     console.log(response);
 
     var seats = response.data.models ;
+
+
     var items = [] ;
 
     var deja_res = response.data.deja_res;
@@ -205,6 +330,8 @@ $(document).ready(function() {
     */
 
     for (var prop in seats) {
+
+
       items.push( [prop, 'available', seats[prop]['category'] ] );
       items.push( [prop, 'unavailable', seats[prop]['category'] + ' ' +'Booked' ] );
     }
