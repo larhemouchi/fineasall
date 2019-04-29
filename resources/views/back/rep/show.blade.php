@@ -16,6 +16,13 @@
               <div class="card-body">
                 <h5 class="card-title">{{ $rep->theatre->titre }} à {{ $rep->salle->nom }}</h5>
 
+
+                <hr />
+
+                <img class="img-fluid" src="{{ asset('uploads/theatre/'. $rep->theatre->img) }}" />
+
+                <hr />
+
                 <p class="card-text">
 
 

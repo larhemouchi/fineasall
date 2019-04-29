@@ -16,9 +16,15 @@
               <div class="card-body">
                 <h5 class="card-title"><a href="{{ route('theatres.show', $theatre->slug)}}">{{ $theatre->titre }}</a></h5>
 
+                <hr />
+
+                <img class="img-fluid" src="{{ asset('uploads/theatre/'. $theatre->img) }}" />
+
+                <hr />
+
                 <p class="card-text">
 
-                	<img class="img-fluid" src="{{ asset('uploads/theatre/'. $theatre->img) }}" />
+                	
 
 
                   {{ $theatre->desc }}

@@ -1,4 +1,4 @@
-@extends('back.layouts.index')
+@extends('front.layouts.index')
 
 @section('title')
 {{$salle->nom}}
@@ -17,7 +17,15 @@
               <div class="card-body">
                 <h5 class="card-title">{{ $salle->nom }}</h5>
 
+                <hr />
+
+                <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre('random') ) }}" />
+
+                <hr />
+
                 <p class="card-text">
+
+
 
 
                   {{ $salle->adress }}
