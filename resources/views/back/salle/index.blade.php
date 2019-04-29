@@ -22,7 +22,8 @@ Modifier les informations d'un théatre
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">{{ $salle->nom }}</h5>
-
+  <p class="card-text">
+<img class="img-fluid" src="{{ asset('uploads/salle/'. $salle->img) }}" />
                 <p class="card-text">
 
 

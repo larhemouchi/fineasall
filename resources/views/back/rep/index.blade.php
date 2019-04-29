@@ -23,8 +23,10 @@ Modifier les informations d'un théatre
               <div class="card-body">
                 <h5 class="card-title">{{ $rep->theatre->titre }} à {{ $rep->salle->nom }}</h5>
 
-                <p class="card-text">
+                
 
+ <p class="card-text">
+<img class="img-fluid" src="{{ asset('uploads/theatre/'. $rep->theatre->img) }}" />
 
                   {{ $rep->dateheure }}
 
