@@ -59,6 +59,11 @@
                       <li class="nav-item">
                           <a class="nav-link" href="{{ url('/home') }}">Home</a>
                       </li>
+                      @can( 'add_theater' )
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('reps.create') }}">Creation, Representation</a>
+                      </li>
+                      @endcan
                     @else
                     <li class="nav-item">
                           <a class="nav-link"  href="{{ url('/login') }}">Login</a>

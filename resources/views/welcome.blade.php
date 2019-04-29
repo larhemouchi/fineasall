@@ -29,7 +29,7 @@
           <div class="carousel-caption text-left">
             <h1>WELCOM TO ROXY THEATRE.</h1>
             <p>La meilleur platforme des theatre disponible au resaux.</p>
-            <p><a class="btn btn-lg btn-primary" href="{{ Auth::check() ? route('home') : route('register') }}" role="button">{{ Auth::check() ? Entrer : "S'enregistrer" }}</a></p>
+            <p><a class="btn btn-lg btn-primary" href="{{ Auth::check() ? route('home') : route('register') }}" role="button">{{ Auth::check() ? 'Entrer' : "S'enregistrer" }}</a></p>
           </div>
         </div>
       </div>
