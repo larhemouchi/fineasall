@@ -110,6 +110,31 @@ class Decore {
      * @return string
      */
 
+    public static function salle_theatre($item = null){
+
+	    $imgs = [
+			's1.png',
+			's2.jpg',
+			's3.jpg',
+			's4.jpg',
+
+		];
+
+		
+
+		if( $item == null){
+	          return $imgs;
+	      }elseif($item == 'random'){
+	      	return $imgs[array_rand($imgs)];
+	      }
+	      else{
+	          return $imgs[$item];
+	      }
+
+
+    }
+
+
     public static function colors($item = null) {
 
 	    $colors = [
