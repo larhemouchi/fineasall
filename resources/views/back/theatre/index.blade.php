@@ -21,7 +21,18 @@ Modifier les informations d'un théatre
 
             <div class="card">
               <div class="card-body">
+
+
+
+
+
+
                 <h5 class="card-title">{{ $theatre->titre }}</h5>
+
+
+
+              <img class="img-fluid" src="{{ asset( Img::noimg( 'theatre', $theatre->img) ) }}" />
+
 
                 <p class="card-text">
 

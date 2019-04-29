@@ -25,7 +25,23 @@ class UsersSeeder extends Seeder
             'sex' => true,
             'email' => 'anna_roxana@gmail.com',
             'tel' => '06060606',
-        ]);
+        ]
+    );
+
+         $enc_pseudo = Crypt::encryptString( 'admino' );
+
+        DB::table('users')->insert(
+        [
+            'pseudo' => $enc_pseudo,
+            'password' => bcrypt('123456'),
+            'nom' => 'admin',
+            'prenom' => 'admin',
+            'sex' => true,
+            'email' => 'admin@admin.com',
+            'tel' => '060606506',
+        ]
+
+        );
 
         $enc_pseudo = Crypt::encryptString( 'matalan' );
 

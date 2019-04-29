@@ -29,6 +29,6 @@ class HomeController extends Controller
         return $theatres;
         */
 
-        return view('home', compact('theatres') );
+        return view('/home' );
     }
 }

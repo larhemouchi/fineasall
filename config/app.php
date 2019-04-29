@@ -35,7 +35,7 @@ return [
     |
     | 
     */
-
+    'noimg' => 'app/noimg.svg',
     'limit_argent' => 15,
     'schema_salle' => 'bbbbbbbbbbbb_bbbbbbbbbbbb0bbbbbbbbbbbb_bbbbbbbbbbbb0dddddddddddd_dddddddddddd0_nnnnnnnnnnn_nnnnnnnnnnn0__nnnnnnnnnn_nnnnnnnnnn0___nnnnnnnnn_nnnnnnnnn0____nnnnnnnn_nnnnnnnn0_____nnnnnnn_nnnnnnn0______vvvvvv_vvvvvv0______aaaaaa_aaaaaa',
     /*

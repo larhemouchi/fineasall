@@ -16,6 +16,20 @@ function cacul_pourcentage($nombre,$total,$pourcentage)
 */
 
 class Img {
+	public static function noimg( $model_name, $what){
+
+
+		if($what != ''){
+
+			return 'uploads/'.$model_name.'/'.$what;
+
+		}else{
+
+			return config('app.noimg');
+
+		}
+
+	}
 
 	public static function store(Request $request, $model_name, $name)
 	{ 
