@@ -283,6 +283,7 @@ class SalleController extends Controller
 
 
                 $num++;
+                //next
                 $y++;
 
                 
