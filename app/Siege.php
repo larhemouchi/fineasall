@@ -12,13 +12,13 @@ class Siege extends Model
     
     protected function cat(){
 
-	    $this->belongsTo('App\Cat');
+	    return $this->belongsTo('App\Cat');
 
     }
 
     protected function res(){
 
-    	$this->hasMany('App\Res');
+    	return $this->hasMany('App\Res');
 
     }
 

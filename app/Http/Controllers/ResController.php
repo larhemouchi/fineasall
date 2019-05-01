@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\{ Res, Rep, Siege, Cat};
 use Illuminate\Http\Request;
 use Auth;
+use Mail;
+
+use App\Mail\ReservedMail;
 
 class ResController extends Controller
 {
@@ -154,8 +157,14 @@ class ResController extends Controller
 
 
     }
-
+    //creation reservation
     public function cr(Rep $rep, Request $request){
+
+        //collection info  to use in the mailing
+        $info = [];
+
+
+        //validating the card
 
         $this->validate($request, [
             'total' => 'required',
@@ -167,19 +176,25 @@ class ResController extends Controller
             'brand' => 'required',
         ]);
 
+        //validating the card
+        $checkout =  json_decode( $request->checkout )  ;
 
-        $checkout =  json_decode( $request->checkout )  ; 
+        //init the total
         $total = 0;
 
+        
 
+        //Loop and get the price of the input
         
         
         foreach ( $checkout as $key => $check ) {
             # code...
-
+            // adding total to an item price
             $total += $check->price;
 
         }
+
+        // if the real price != input price that mean a hacking attempt
 
         if( $total != $request->total ){
 
@@ -191,13 +206,22 @@ class ResController extends Controller
         }
 
 
+
+        // loop throug every item in the jsoon input
+
         foreach ( $checkout as $key => $check ) {
             # code...
 
+
+            //searching for a category
+
             $cat = Cat::where('nom', 'LIKE', '%' . $check->cat . '%')->first();
+
+            // if category dont exist
 
             if(!$cat){
 
+                //throw an error
 
                 $message = 'Application error [ CAT ]';
                 $state = 'error';
@@ -206,6 +230,9 @@ class ResController extends Controller
 
             }
 
+
+            //searching a siege
+
             $siege = Siege::where('num', $check->num )
                 ->where('num', $check->num )
                 ->where('map', $key )
@@ -213,7 +240,11 @@ class ResController extends Controller
                 ->where('salle_id', $rep->salle->id )
                 ->first();
 
+            // if siege dont existe
+
             if( !$siege ){
+
+                //throw error
 
                 $message = 'Application error [ SIEGE ]';
                 $state = 'error';
@@ -222,11 +253,20 @@ class ResController extends Controller
 
             }else{
 
-                Res::create([
+                // creating the reservation
+
+                $res = Res::create([
                     'user_id' => Auth::id(),
                     'rep_id' => $rep->id,
                     'siege_id' => $siege->id
                 ]);
+
+                // push info to use in mailing
+
+
+                array_push($info, $res);
+
+                
 
             }
             
@@ -234,7 +274,10 @@ class ResController extends Controller
         }
 
 
+        // throw a message if payed
 
+
+        Mail::to(Auth::user()->email )->send( new ReservedMail( $info ) );
 
 
         $message = 'Conglation Payé avec succes';

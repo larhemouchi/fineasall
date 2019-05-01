@@ -22,7 +22,7 @@ class Rep extends Model
 
     protected function res(){
 
-    	$this->hasMany('App\Res');
+    	return $this->hasMany('App\Res');
 
     }
 

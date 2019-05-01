@@ -6,7 +6,7 @@
 
   <br class="featurette-divider">
 
- 
+
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
@@ -16,9 +16,11 @@
                 </h5>
 
 
-                
 
-                <img class="img-fluid" src="{{ asset('uploads/theatre/'. $rep->theatre->img) }}" />
+
+
+
+                <img class="img-fluid" src="{{ asset( Img::noimg( 'theatre', $rep->theatre->img )  ) }}" />
 
                 <hr />
 
@@ -34,7 +36,7 @@
 
                 <a href="{{ route( 'reps.edit', $rep->id ) }}" class="card-link">Modifier</a>
 
-                
+
 
                 <hr />
 
@@ -49,23 +51,33 @@
                 {!! Form::close() !!}
 
 
-                @endhasrole
+
+                @else
+
+                  @if( Auth::check())
 
 
-                @if( Auth::check() )
 
-                  @if( Auth::id() != 1 )
 
-                  <a href="{{ route( 'res.init', $rep->id ) }}" class="card-link">Resérver</a>
+                    <a href="{{ route( 'res.init', $rep->id ) }}" class="card-link">Resérver</a>
+
+
+
+
+
+                  @endif
 
                   @endif
 
                 @endif
 
 
-                
 
-                
+
+
+
+
+
 
 
 

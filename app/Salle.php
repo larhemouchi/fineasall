@@ -18,7 +18,7 @@ class Salle extends Model
 
     protected function sieges(){
 
-    	$this->hasMany('App\Siege');
+    return $this->hasMany('App\Siege');
 
     }
 
