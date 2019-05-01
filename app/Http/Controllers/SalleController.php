@@ -268,7 +268,6 @@ class SalleController extends Controller
 
                 $reserved = Res::where('siege_id', $s->id )
                     ->where('rep_id', $rep->id )
-                    ->where('user_id', Auth::id() )
                     ->first();
 
 
