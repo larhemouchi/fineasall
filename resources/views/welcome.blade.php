@@ -36,7 +36,7 @@
         </div>
       </div>
 
-
+<!--     -->
     @forelse($reps as $rep)
     <div class="carousel-inner">
       <div class="carousel-item">
@@ -49,7 +49,7 @@
         @endif
         <div class="container">
           <div class="carousel-caption text-left">
-            <h1>{{ $rep->theatre->titre }} à {{ $rep->salle->nom }}</h1>
+            <h1>{{ $rep->theatre->titre }} </h1>
             <p>{{ $rep->prix }} €  {{ \Carbon\Carbon::parse( $rep->dateheure )->diffForHumans() }}</p>
             <p><a class="btn btn-lg btn-primary" href="{{ route('reps.show', $rep->id) }}" role="button">Voire</a></p>
           </div>
@@ -73,7 +73,62 @@
     </a>
   </div>
 
-<!-- CARDS
+<!--   ///////////////////////////   -->
+
+<!-- representations
+  ================================================== -->
+<div class="container">
+  <h3 class="text-center col-xs-12"> Les representations</h3>
+<div class="row">
+
+  
+  @forelse( $reps as $rep )
+        <div class="col-md-4">
+
+          <div class="card mb-4 shadow-sm">
+            @if($rep->theatre->img != '')
+          <img class="img-fluid" src="{{ asset('uploads/theatre/'. $rep->theatre->img) }}" />
+        @else
+
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="{{ Decore::colors('random') }}"></rect><text x="50%" y="50%" fill="{{ Decore::colors('random') }}" dy=".3em">{{ $rep->theatre->titre }}</text></svg>
+
+        @endif
+
+            <div class="card-body">
+              <p class="card-text">{{ $rep->prix }} €  {{ \Carbon\Carbon::parse( $rep->dateheure )->diffForHumans() }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{{ route('reps.show', $rep->id) }}" type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                  @can('modify_theater')
+            <a href="{{ route('reps.edit', $rep->id) }}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+          @endcan
+                  
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    @empty
+        
+    @endforelse
+
+    @if( count($reps) > 0  )
+      <div class="col-md-12">
+        <a href="{{ route('reps.index') }}" type="button" class="btn btn-sm btn-outline-secondary  pull-right">Voire Tout</a>
+      </div>
+      
+    @endif
+
+</div>
+</div>
+
+<hr class="featurette-divider">
+
+
+
+<!-- Theatre
   ================================================== -->
 <div class="container">
 	<h3 class="text-center col-xs-12"> Les Derniers Théatres</h3>
@@ -115,7 +170,7 @@
 
     @if( count($theatres) > 0  )
     	<div class="col-md-12">
-    		<a href="{{ route('theatres.index') }}" type="button" class="btn btn-sm btn-outline-secondary  pull-right">Voire Tout</a>
+    		<a href="{{ route('theatres.index') }}" type="button" class="btn btn-sm btn-outline-secondary  pull-right">Voir Tout</a>
     	</div>
     	
     @endif
@@ -131,7 +186,7 @@
 
 
 
-<!-- CARDS
+<!-- salle
   ================================================== -->
 <div class="container">
 	<h3 class="text-center col-xs-12"> Les salles</h3>
@@ -191,56 +246,6 @@
 
 
 
-<div class="container">
-	<h3 class="text-center col-xs-12"> Les representations</h3>
-<div class="row">
-
-	
-	@forelse( $reps as $rep )
-        <div class="col-md-4">
-
-          <div class="card mb-4 shadow-sm">
-          	@if($rep->theatre->img != '')
-        	<img class="img-fluid" src="{{ asset('uploads/theatre/'. $rep->theatre->img) }}" />
-        @else
-
-        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="{{ Decore::colors('random') }}"></rect><text x="50%" y="50%" fill="{{ Decore::colors('random') }}" dy=".3em">{{ $rep->theatre->titre }}</text></svg>
-
-        @endif
-
-            <div class="card-body">
-              <p class="card-text">{{ $rep->prix }} €  {{ \Carbon\Carbon::parse( $rep->dateheure )->diffForHumans() }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="{{ route('reps.show', $rep->id) }}" type="button" class="btn btn-sm btn-outline-secondary">View</a>
-                  @can('modify_theater')
-					  <a href="{{ route('reps.edit', $rep->id) }}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
-				  @endcan
-                  
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-    @empty
-        
-    @endforelse
-
-    @if( count($reps) > 0  )
-    	<div class="col-md-12">
-    		<a href="{{ route('reps.index') }}" type="button" class="btn btn-sm btn-outline-secondary  pull-right">Voire Tout</a>
-    	</div>
-    	
-    @endif
-
-</div>
-</div>
-
-
-
-    <hr class="featurette-divider">
 
 
 

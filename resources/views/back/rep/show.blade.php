@@ -1,23 +1,22 @@
 @extends('front.layouts.index')
 
-@section('title')
-{{ $rep->theatre->titre }}
-@endsection
+
 
 @section('content')
 
-  <hr class="featurette-divider">
-<h3 class="text-center col-xs-12"> {{ $rep->theatre->titre }}</h3>
-  <hr class="featurette-divider">
+  <br class="featurette-divider">
+
+ 
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">{{ $rep->theatre->titre }} à {{ $rep->salle->nom }}</h5>
+                <h5 class="card-title">{{ $rep->theatre->titre }}
+                </h5>
 
 
-                <hr />
+                
 
                 <img class="img-fluid" src="{{ asset('uploads/theatre/'. $rep->theatre->img) }}" />
 
@@ -53,12 +52,18 @@
                 @endhasrole
 
 
-                @hasrole('regular')
+                @if( Auth::check() )
+
+                  @if( Auth::id() != 1 )
 
                   <a href="{{ route( 'res.init', $rep->id ) }}" class="card-link">Resérver</a>
 
+                  @endif
 
-                @endhasrole
+                @endif
+
+
+                
 
                 
 

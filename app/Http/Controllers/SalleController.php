@@ -117,7 +117,7 @@ class SalleController extends Controller
     {
         Salle::destroy($salle->id);
 
-        return 'DESTROYED SUCCEFULLY';
+       return redirect('/');
     }
 
 

@@ -69,9 +69,9 @@ Modifier les informations d'un théatre
 
 
           <div class="form-group">
-            <label for="cvv">BRAND</label>
+            <label for="cvv">Type carte </label>
 
-            {!! Form::select('brand', [0 => 'Visa'], null, ['class' => 'form-control', 'id' => 'brand' ]) !!}
+            {!! Form::select('brand', [0 => 'Visa', 1=>'Mastercard',2=>'PayPal',3 => 'Bancontact'], null, ['class' => 'form-control', 'id' => 'brand' ]) !!}
 
           </div>
 

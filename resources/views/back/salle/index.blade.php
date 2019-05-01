@@ -22,9 +22,9 @@ Modifier les informations d'un théatre
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">{{ $salle->nom }}</h5>
-  <p class="card-text">
-<img class="img-fluid" src="{{ asset('uploads/salle/'. $salle->img) }}" />
+     <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre('random') ) }}"  
                 <p class="card-text">
+
 
 
                   {{ $salle->adress }}
@@ -36,12 +36,7 @@ Modifier les informations d'un théatre
 
                 <a href="{{ route( 'salles.edit', $salle->id ) }}" class="card-link">Modifier</a>
 
-                
-
-                <hr />
-
-
-                {!! Form::open(['method' => 'DELETE', 'route' => ['salles.destroy', $salle->id]]) !!}
+                     {!! Form::open(['method' => 'DELETE', 'route' => ['salles.destroy', $salle->id]]) !!}
 
                 <button class="card-link">Suprimer</button>
 

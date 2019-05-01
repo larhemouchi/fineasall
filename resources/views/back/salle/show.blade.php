@@ -1,13 +1,9 @@
 @extends('front.layouts.index')
 
-@section('title')
-{{$salle->nom}}
-@endsection
 
 @section('content')
 
-  <hr class="featurette-divider">
-<h3 class="text-center col-xs-12"> {{ $salle->nom }}</h3>
+
   <hr class="featurette-divider">
     <div class="content">
       <div class="container">
@@ -17,7 +13,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{ $salle->nom }}</h5>
 
-                <hr />
+                
 
                 <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre('random') ) }}" />
 
@@ -76,10 +72,13 @@
 @section('scripts')
 
 <script>
-
-
-
 </script>
 
 
 @endsection
+
+
+
+
+
+

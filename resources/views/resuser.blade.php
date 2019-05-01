@@ -1,31 +1,10 @@
-
 @extends('front.layouts.index')
+
+@section('title')
+Modifier les informations d'un théatre
+@endsection
+
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        
-
-
-
-
-                        </div>
-
-
-
-                    @endif
-
-                 <h2> Welcome {{Auth::user()->nom }}  {{Auth::user()->prenom }} </h2>
-
-                    
-
 <table class="table">
                     <ul>
 
@@ -70,9 +49,17 @@
                         </ul>
 </table>
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@endsection
+
+
+
+@section('scripts')
+
+<script>
+
+
+
+</script>
+
+
 @endsection

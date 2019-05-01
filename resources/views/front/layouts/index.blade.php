@@ -57,7 +57,7 @@
 
                     @if (Auth::check())
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                          <a class="nav-link" href="{{ url('/') }}">Home</a>
                       </li>
                       @can( 'add_theater' )
                       <li class="nav-item">
@@ -65,6 +65,10 @@
                       </li>
                       @endcan
                     @else
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                      </li>
+
                     <li class="nav-item">
                           <a class="nav-link"  href="{{ url('/login') }}">Login</a>
                       </li>
