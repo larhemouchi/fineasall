@@ -19,7 +19,9 @@
 
                 <hr />
 
-                <img class="img-fluid" src="{{ asset('uploads/theatre/'. $rep->theatre->img) }}" />
+
+
+                <img class="img-fluid" src="{{ asset( Img::noimg( 'theatre', $rep->theatre->img )  ) }}" />
 
                 <hr />
 
@@ -50,15 +52,27 @@
                 {!! Form::close() !!}
 
 
+
+                @else
+
+                  @if( Auth::check())
+
+
+
+
+                    <a href="{{ route( 'res.init', $rep->id ) }}" class="card-link">Resérver</a>
+
+
+
+
+
+                  @endif
+
+
                 @endhasrole
 
 
-                @hasrole('regular')
 
-                  <a href="{{ route( 'res.init', $rep->id ) }}" class="card-link">Resérver</a>
-
-
-                @endhasrole
 
                 
 

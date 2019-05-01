@@ -225,6 +225,10 @@
         </div>
 
     @empty
+
+    <div class="alert alert-warning" role="alert">
+  VIDE
+</div>
         
     @endforelse
 

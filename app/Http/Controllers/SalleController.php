@@ -125,7 +125,11 @@ class SalleController extends Controller
     public function siegesInfo(Rep $rep)
     {
 
+        //get the theater item
+
         $theatre = $rep->theatre; 
+
+        //get the salle item
         $salle = $rep->salle;
 
 
@@ -164,8 +168,11 @@ class SalleController extends Controller
         $sieges = str_split( config('app.schema_salle') ) ;
 
 
-
+        //looping throu schema
         foreach ($sieges as $siege) {
+
+
+            // if there is an 0 jump to next line
             
 
             if($siege == '0'){
@@ -178,16 +185,29 @@ class SalleController extends Controller
                 //if found in array enter
                 //if not found assign
 
-                // 
                 //$c = $models[$siege]['model'];
 
+                // we want just to know if we know allready the cat and the model is already existed
+
                 if( in_array ( $siege, $models ) ){
+
+                    // token just the id
                     
                     $c_id = $models[$siege]['model']->id;
 
                 }else{
 
+                    // searching the category and stored in the models array
+
                     $category = Cat::where('lettre', $siege)->first();
+
+                    // if cat not found throw json empty
+
+                    if( !$category ){
+
+                        return json_encode( [] );
+
+                    }
 
                     $c_id = $category->id;
 
@@ -204,6 +224,9 @@ class SalleController extends Controller
                 if( ! $salle->sieges_complet ){
 
 
+                    //creating the sieges one by one
+
+
                     $s = Siege::create([
 
                         'num' => $num,
@@ -218,11 +241,15 @@ class SalleController extends Controller
 
                 }else{
 
+                    //finding the sieges one by one
+
                     $s = Siege::where('num' , $num)
                     ->where('map' , $x.'_'.$y)
                     ->where('salle_id' , $salle->id)
                     ->where('cat_id' , $c_id)
                     ->first();
+
+                    // if not found throw error
 
                     if(!$s){
 
@@ -237,18 +264,23 @@ class SalleController extends Controller
                 }
 
 
-                
+                //search for reserved sieges
 
                 $reserved = Res::where('siege_id', $s->id )
                     ->where('rep_id', $rep->id )
                     ->where('user_id', Auth::id() )
                     ->first();
 
+
+                //if found stored in the deja res array
+
                 if( $reserved ){
 
                     
                     array_push($deja_res, $x.'_'.$y);
                 }
+
+                // next item in the schema
 
 
                 $num++;
@@ -259,6 +291,9 @@ class SalleController extends Controller
             }elseif($siege != '0' && $siege == '_'){
 
 
+                // next item in the schema because _ mean empty siege
+
+
                 $y++;
 
             }else{
@@ -267,10 +302,17 @@ class SalleController extends Controller
 
         }
 
-        $salle->sieges_complet = True;
+        // if the loop end that mean the siege is fullfilled
 
-        $salle->save();
+        if(! $salle->sieges_complet ){
 
+            $salle->sieges_complet = True;
+
+            $salle->save();
+        }
+
+
+        // throw collected info
 
         return json_encode( ['models' => $models ,'deja_res' => $deja_res ] );
 

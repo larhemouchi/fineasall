@@ -31,7 +31,7 @@ class User extends Authenticatable
 
     protected function res(){
 
-        $this->hasMany('App\Res');
+        return $this->hasMany('App\Res');
 
     }
 }
