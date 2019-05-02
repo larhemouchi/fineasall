@@ -15,6 +15,11 @@ class WelcomeController extends Controller
         $reps = Rep::latest()->take(9)->get();
 
 
+
+
+
+
+
         return view('welcome', compact('theatres', 'salles', 'reps') );
     }
 }

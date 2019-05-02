@@ -10,6 +10,10 @@ class Res extends Model
     	'rep_id', 'siege_id', 'user_id'
     ];
 
+   public function titre(){
+      return $this->user->full_name() .' à reservé le siége n° '. $this->siege->num.' dans la salle '. $this->rep->salle->nom .' pour voire le théatre : '. $this->rep->theatre->titre ;
+   }
+
     public function siege()
     {
        return $this->belongsTo('App\Siege');

@@ -15,7 +15,7 @@
 
                 
 
-                <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre('random') ) }}" />
+                <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre($salle->id) ) }}" />
 
                 <hr />
 

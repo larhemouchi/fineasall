@@ -83,6 +83,63 @@
 
       </ul>
 
+
+
+
+{!! Form::open(['route' => 'theatres.search', 'method' => 'post', 'class' => 'form-inline mt-2 mt-md-0']) !!}
+
+            <input name="search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                        @if (Auth::guest())
+                            <li class="nav-item"><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle nav-item" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->nom }} {{ Auth::user()->prenom }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+
+                                <li class="nav-item" >
+                                        <a href="{{ route('users.res', Auth::id()) }}">
+                                          Mes reservations
+                                        </a>
+
+                                    </li>
+
+                                    <li class="nav-item" >
+                                        <a href="{{ route('users.mod-info', Auth::id()) }}">
+                                          Modifier mes informations
+                                        </a>
+
+                                    </li>
+                                    <li class="nav-item" >
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                    </ul>
+
+
+
+
+
+
     </div>
   </nav>
 </header>

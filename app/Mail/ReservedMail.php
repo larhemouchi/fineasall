@@ -30,6 +30,6 @@ class ReservedMail extends Mailable
      */
     public function build()
     {
-        return $this->from('no-reply@roxy.com')->markdown('emails.reserved_mail')->with( 'info', $this->info );
+        return $this->from('no-reply@roxy.com')->subject('Reservé avec succes')->markdown('emails.reserved_mail')->with( 'info', $this->info );
     }
 }

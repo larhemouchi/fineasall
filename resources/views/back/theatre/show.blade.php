@@ -18,7 +18,7 @@
 
                 <hr />
 
-                <img class="img-fluid" src="{{ asset('uploads/theatre/'. $theatre->img) }}" />
+                <img class="img-fluid" src="{{ asset( Img::noimg('theatre', $theatre->img ) ) }}" />
 
                 <hr />
 

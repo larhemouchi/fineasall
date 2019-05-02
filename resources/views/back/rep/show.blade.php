@@ -52,9 +52,11 @@
 
 
 
-                @else
+                @endif
 
-                  @if( Auth::check())
+                @hasrole('regular')
+
+
 
 
 
@@ -65,9 +67,8 @@
 
 
 
-                  @endif
 
-                  @endif
+
 
                 @endif
 

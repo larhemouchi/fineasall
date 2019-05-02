@@ -9,6 +9,14 @@ class Rep extends Model
     protected $fillable = ['theatre_id','salle_id','dateheure', 'prix'];
 
 
+      
+
+
+    public function titre(){
+       return $this->theatre->titre .' à '. $this->salle->nom ;
+    }
+
+
     public function salle()
     {
        return $this->belongsTo('App\Salle');

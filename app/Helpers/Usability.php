@@ -3,7 +3,7 @@ namespace App\Helpers\Usability;
 
 use Illuminate\Http\Request;
 
-
+use Session;
 use File;
 
 /*
@@ -127,7 +127,9 @@ class Decore {
      * @return string
      */
 
-    public static function salle_theatre($item = null){
+    public static function salle_theatre($item){
+
+		
 
 	    $imgs = [
 			's1.png',
@@ -137,16 +139,23 @@ class Decore {
 
 		];
 
-		
+		$random_img = $imgs[array_rand($imgs)];
 
-		if( $item == null){
-	          return $imgs;
-	      }elseif($item == 'random'){
-	      	return $imgs[array_rand($imgs)];
-	      }
-	      else{
-	          return $imgs[$item];
-	      }
+
+		if( Session::get('key-salle-img-'.$item ) ){
+
+			return Session::get('key-salle-img-'.$item );
+
+		}else{
+
+			Session::put('key-salle-img-'.$item , $random_img );
+
+
+			return Session::get('key-salle-img-'.$item  );
+
+		}
+
+	
 
 
     }

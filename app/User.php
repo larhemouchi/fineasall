@@ -28,6 +28,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected function full_name(){
+
+        return $this->prenom.' '.$this->nom;
+
+    }
+
 
     protected function res(){
 

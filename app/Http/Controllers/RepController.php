@@ -17,7 +17,14 @@ class RepController extends Controller
     private var $salles = Salle::get(['id', 'nom'])->pluck('nom', 'id');
     private var $theatres = Theatre::get(['id', 'titre'])->pluck('titre', 'id');
 */
+    public function search(Request $request)
+    {
 
+
+
+
+        return view('back.rep.index', compact('reps') );
+    }
 
     public function index()
     {

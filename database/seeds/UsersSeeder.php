@@ -28,7 +28,7 @@ class UsersSeeder extends Seeder
         ]
     );
 
-         $enc_pseudo = Crypt::encryptString( 'admino' );
+        $enc_pseudo = Crypt::encryptString( 'admino' );
 
         DB::table('users')->insert(
         [

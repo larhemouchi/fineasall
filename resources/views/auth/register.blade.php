@@ -103,7 +103,7 @@
                             <label for="sex" class="col-md-4 control-label">Sex</label>
 
                             <div class="col-md-6">
-                                {{ Form::select('sex', [True => 'Homme', False => 'Femme et autres' ], old('sex'), ['Ton sex' => 'Pick a size...', 'required' => true, 'class' => 'form-control']) }}
+                                {{ Form::select('sex', [True => 'Homme', False => 'Femme' ], old('sex'), ['Ton sex' => 'Pick a size...', 'required' => true, 'class' => 'form-control']) }}
 
 
                                 @if ($errors->has('sex'))

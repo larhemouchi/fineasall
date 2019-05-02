@@ -50,7 +50,11 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $superAdmin = User::find(1);
 
-        $superAdmin->assignRole('super_admin');
+        User::where('id' , [1, 2])->each(function ($item, $key) {
+
+            $item->assignRole('super_admin');
+        });
+
 
 
         Permission::create(['name' => 'reserve']);
@@ -59,10 +63,12 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $regular->givePermissionTo(['reserve' ]);
 
-        $regular_user = User::find(2);
+        User::whereNotIn('id' , [1, 2])->each(function ($item, $key) {
+
+            $item->assignRole('regular');
+        });
 
 
-        $regular_user->assignRole('regular');
 
 
 
