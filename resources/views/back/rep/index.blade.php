@@ -138,64 +138,6 @@ $time = $dt->format('H:i');
             </td>
           </tr>
 
-
-<!--
-
-                <tr>
-            <td>
-              <a href="?q=159C2526-A3C2-2316-BBBD-343D0A07E819&amp;module=QUANTITY">Le jeudi 31 mai 2018</a>
-            </td>
-            <td>
-              20:00
-            </td>
-            <td class="hidden-xs">
-               <i class="fa fa-exclamation" aria-hidden="true"></i> 3 élément(s) restant(s) <i class="fa fa-exclamation" aria-hidden="true"></i>
-            </td>
-            <td class="xs-pull-left">
-              <a href="?q=159C2526-A3C2-2316-BBBD-343D0A07E819&amp;module=QUANTITY" class="pull-right btn btn-sm btn-primary mb-0">Réserver</a>
-            </td>
-          </tr>     <tr>
-            <td>
-              <a href="">Le vendredi 1er juin 2018</a>
-            </td>
-            <td>
-              20:00
-            </td>
-            <td class="hidden-xs">
-              
-            </td>
-            <td class="xs-pull-left">
-              <div class="pull-right btn btn-sm btn-danger mb-0">Complet</div>
-            </td>
-          </tr>     <tr>
-            <td>
-              <a href="?q=D6C6F324-ECB7-0CD1-52C4-8F17D49BF8E6&amp;module=QUANTITY">Le samedi 2 juin 2018</a>
-            </td>
-            <td>
-              19:00
-            </td>
-            <td class="hidden-xs">
-               <i class="fa fa-exclamation" aria-hidden="true"></i> 1 élément(s) restant(s) <i class="fa fa-exclamation" aria-hidden="true"></i>
-            </td>
-            <td class="xs-pull-left">
-              <a href="?q=D6C6F324-ECB7-0CD1-52C4-8F17D49BF8E6&amp;module=QUANTITY" class="pull-right btn btn-sm btn-primary mb-0">Réserver</a>
-            </td>
-          </tr>     <tr>
-            <td>
-              <a href="">Le dimanche 3 juin 2018</a>
-            </td>
-            <td>
-              16:00
-            </td>
-            <td class="hidden-xs">
-              
-            </td>
-            <td class="xs-pull-left">
-              <div class="pull-right btn btn-sm btn-danger mb-0">Complet</div>
-            </td>
-          </tr>
--->
-
           </tbody></table></div>  
 
   <div class="text-left">
