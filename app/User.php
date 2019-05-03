@@ -30,6 +30,8 @@ class User extends Authenticatable
 
     protected function full_name(){
 
+        return 'dfg';
+
         return $this->prenom.' '.$this->nom;
 
     }

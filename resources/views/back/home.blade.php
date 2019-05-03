@@ -88,6 +88,8 @@ Modifier les informations d'un théatre
                 <p class="card-text">
 
                     @foreach($res as $re )
+
+
                         <li>{{ $re->titre() }}</li>
                     @endforeach
                 </p>
