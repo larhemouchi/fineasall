@@ -13,7 +13,7 @@ class Res extends Model
    public function titre(){
 
       //$re->rep->theatre->titre
-      return $this->user->nom .'à reservé le siége n° '. $this->siege->num.' dans la salle '. $this->rep->salle->nom .' pour voire le théatre : '. $this->rep->theatre->titre ;
+      return $this->user->full_name .'à reservé le siége n° '. $this->siege->num.' dans la salle '. $this->rep->salle->nom .' pour voire le théatre : '. $this->rep->theatre->titre ;
    }
 
     public function siege()
