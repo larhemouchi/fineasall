@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Voiding;
 class Res extends Model
 {
     protected $fillable = [
@@ -12,8 +12,10 @@ class Res extends Model
 
    public function titre(){
 
-      //$re->rep->theatre->titre
-      return $this->user->nom .'à reservé le siége n° '. $this->siege->num.' dans la salle '. $this->rep->salle->nom .' pour voire le théatre : '. $this->rep->theatre->titre ;
+
+
+      //$re->reheatre->titre
+      return $this->user->nom .' '.$this->user->prenom.' à reservé le siége n° '. $this->siege->num.' pour voir  le théatre : '. $this->rep->theatre->titre ;
    }
 
     public function siege()
@@ -29,7 +31,7 @@ class Res extends Model
 
     public function user()
     {
-       return $this->belongsTo('App\User', 'user_id');
+       return $this->belongsTo('App\User');
     }
 
 

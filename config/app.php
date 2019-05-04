@@ -284,6 +284,7 @@ return [
         'Math' => App\Helpers\Usability\Math::class,
         'Money' => App\Helpers\Usability\Money::class,
         'Img' => App\Helpers\Usability\Img::class,
+        'Voiding' => App\Helpers\Usability\Voiding::class,
 
     ],
 

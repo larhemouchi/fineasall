@@ -13,7 +13,7 @@ class Rep extends Model
 
 
     public function titre(){
-       return $this->theatre->titre .' à '. $this->salle->nom ;
+       return $this->theatre->titre  ;
     }
 
 

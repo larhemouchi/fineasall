@@ -2,7 +2,7 @@
 namespace App\Helpers\Usability;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Optional;
 use Session;
 use File;
 
@@ -14,6 +14,38 @@ function cacul_pourcentage($nombre,$total,$pourcentage)
   return round($resultat); // Arrondi la valeur
 }
 */
+
+class Voiding{
+	public static function optional($value = null, callable $callback = null)
+    {
+        if (is_null($callback)) {
+            return new Optional($value);
+        } elseif (! is_null($value)) {
+            return $callback($value);
+        }
+    }
+
+/*
+    public static function getSalleName($object, $rep){
+
+    	if(self::optional($this->rep->salle) == self::optional(null)){
+
+    		return $object;
+
+    	}else{
+
+    		return Salle::find( $rep->salle->id );
+
+    		
+    	}
+
+
+
+
+    }
+
+*/
+}
 
 class Img {
 	public static function noimg( $model_name, $what = null){

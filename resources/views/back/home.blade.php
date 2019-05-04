@@ -52,7 +52,7 @@ Modifier les informations d'un théatre
                 <p class="card-text">
 
                     @foreach($salles as $salle)
-                        <li><a href="{{route('salles.show', $salle->slug )}}">{{ $salle->nom }}</a></li>
+                        <li><a href="{{route('salles.show', $salle->slug )}}"></a></li>
                     @endforeach
                 </p>
 
@@ -88,8 +88,6 @@ Modifier les informations d'un théatre
                 <p class="card-text">
 
                     @foreach($res as $re )
-
-
                         <li>{{ $re->titre() }}</li>
                     @endforeach
                 </p>
