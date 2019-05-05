@@ -13,11 +13,14 @@ Modifier les informations d'un théatre
 <section class="container">
 
   <div class="row">
-    <div class="col-sm-3">
-      <h2 align="center"><strong>{{$representation->show->title}}</strong></h2>
-            <a href="#title">
 
-      <img src="{{asset($representation->show->poster_url)}}" alt="-" width="380" height="480" class="pb-15">
+  @forelse( $reps as $rep )
+
+    <div class="col-sm-3">
+      <h2 align="center"><strong>{{$rep->theatre->titre}}</strong></h2>
+            <a href="#titre">
+
+      <img src="" alt="-" width="380" height="480" class="pb-15">
             </a>
     </div>
     <div class="col-sm-1">
@@ -28,7 +31,7 @@ Modifier les informations d'un théatre
         </p><p>Cydric Ruth , Zouhair Larhemouchi, Baptiste Isaia, Philippe dupont, Renaud Riga &nbsp; </p>
 
 
-        <p> <strong>{{$representation->show->title}}</strong>, autrement dit un montage 
+        <p> <strong>{{$rep->theatre->titre}}</strong>, autrement dit un montage 
         d’extraits de grosses productions issus du cinéma américain. Le Collectif Mensuel en assure 
         les dialogues, le doublage, la musique et les bruitages sous nos yeux fascinés. Face à l
         a décision du gouvernement qui souhaite taxer les très hauts revenus, le 
@@ -79,10 +82,11 @@ Modifier les informations d'un théatre
 
 @php
 
-$dt = new Carbon\Carbon( $representation->when );
+$dt = new Carbon\Carbon( $rep->dateheure );
 
 $date = $dt->format('l jS \\of F Y ');
 $time = $dt->format('H:i'); 
+
 @endphp
 
 
@@ -95,7 +99,7 @@ $time = $dt->format('H:i');
               {{ $time }}
             </td>
             <td>
-              {{$representation->price}} $
+              {{$rep->prix}} Euro
             </td>
             <td class="hidden-xs">
               
@@ -106,7 +110,7 @@ $time = $dt->format('H:i');
 
 
 
-     <form action="{{url('representation_user/representation/'.$representation->id.'/reserver')}}" method="post">
+     <form action="" method="post">
    {{csrf_field()}}
 
 
@@ -199,10 +203,17 @@ $time = $dt->format('H:i');
           </tbody></table></div>  
 
   <div class="text-left">
-    <a href="{{url('reps')}}" class="btn btn-primary btn-warning">Retour</a>
+    <a href="{{ '' }}" class="btn btn-primary btn-warning">Retour</a>
   </div>
 
 </section>
+
+@empty
+
+  <div class="alert alert-warning" >Empty</div>
+@endforelse
+
+{{--
 <footer>
   <div class="container">
     <div class="row">
@@ -238,11 +249,7 @@ $time = $dt->format('H:i');
 </div>
 
 
-
-
-
-
-</body>
+--}}
 
 
 

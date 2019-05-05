@@ -1,6 +1,11 @@
 @extends('front.layouts.index')
 
 
+@section('title')
+
+
+@endsection
+
 @section('content')
 
 
