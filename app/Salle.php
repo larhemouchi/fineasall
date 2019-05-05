@@ -11,9 +11,14 @@ class Salle extends Model
 
 
 
+    public function theatres()
+    {
+       return $this->belongsToMany('App\Theatre', 'reps');
+    }
+
     public function reps()
     {
-       return $this->belongsToMany('App\Theatre');
+       return $this->hasMany('App\Rep');
     }
 
     protected function sieges(){
@@ -21,6 +26,8 @@ class Salle extends Model
     return $this->hasMany('App\Siege');
 
     }
+
+
 
     
 

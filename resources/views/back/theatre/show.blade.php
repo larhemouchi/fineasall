@@ -12,7 +12,9 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <div class="card">
+
+          <div class="row">
+            <div class="card col-md-6">
               <div class="card-body">
                 <h5 class="card-title"><a href="{{ route('theatres.show', $theatre->slug)}}">{{ $theatre->titre }}</a></h5>
 
@@ -56,6 +58,43 @@
 
 
               </div>
+            </div>
+
+            <div class="col-md-6">
+
+            <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Salle</th>
+            <th scope="col">Adress</th>
+            <th scope="col">Date</th>
+            <th scope="col">Heure</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+        @foreach( $theatre->reps as $rep)
+
+        <tr>
+            <th scope="row"><a class="btn btn-primary" href="{{ route( 'res.init', $rep->id ) }}" role="button">Reserver</a></th>
+            <td>{{  $rep->salle->nom   }}</td>
+            <td>{{  $rep->salle->adress   }}</td>
+            <td>{{  \Carbon\Carbon::parse($rep->dateheure)->format('l jS \\of F Y ')   }}</td>
+            <td>{{  \Carbon\Carbon::parse($rep->dateheure)->format('H:i')   }}</td>
+          </tr>
+
+
+        @endforeach
+
+        </tbody>
+      </table>
+
+
+
+            </div>
+
             </div>
 
           </div>
