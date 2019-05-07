@@ -20,9 +20,12 @@ Modifier les informations d'un théatre
 
 
             <div class="card">
+
               <div class="card-body">
-                <h5 class="card-title">{{ $salle->nom }}</h5>
-     <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre('random') ) }}"  
+              <div class="card-title"> <h5>  {{ $salle->nom }}</h5>
+
+     <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre('random') ) }}" 
+     <class="card-title"> 
                 <p class="card-text">
 
 
@@ -47,7 +50,7 @@ Modifier les informations d'un théatre
 
                 
 
-
+</div>
 
               </div>
             </div>

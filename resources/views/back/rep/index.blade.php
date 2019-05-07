@@ -6,61 +6,39 @@ Toutes les representations
 
 @section('content')
 
-  <hr class="featurette-divider">
-<h3 class="text-center col-xs-12"> Toutes les representations</h3>
-  <hr class="featurette-divider">
-      <div class="container">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-12 my-3">
+            <div class="pull-right">
+              
+            </div>
+        </div>
+    </div> 
 
-          
-        <div class="row">
-
-            @forelse( $reps as $rep )
-          <div class="col-md-6">
-
-
-
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{ $rep->theatre->titre }}</h5>
-                <div class="row">
-                <div class="col-xs-12">
-                  <div class="row">
-
-                    <div class="col-md-6">
-                    <h3>Image du théatre</h3>
-                      <div class="align-middle">
-                      <img class="img-fluid" src="{{ asset( Img::noimg('theatre', $rep->theatre->img)  ) }}" />
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                    <h3>Image de la salle</h3>
-                    <div class="align-middle">
-                      <img class="img-fluid align-middle" src="{{ asset('uploads/salle/'. Decore::salle_theatre('random') ) }}" />
-                    </div>
-                    </div>
-
-
-                  </div>
-
-                
-                
-                </div>
-                
-
-                </div>
-
-                <p class="card-text">
-
-
-
-                </p>
-
-                @hasrole('super_admin')
+    <div id="products" class="row view-group">
+               @forelse( $reps as $rep )
+                <div class="item col-xs-4 col-lg-4">
+                    <div class="thumbnail card">
+                        <div class="img-event">
+                            <img class="img-fluid" src="{{ asset( Img::noimg('theatre', $rep->theatre->img)  ) }}" />
+                        </div>
+                        <div class="caption card-body">
+                            <h4 class="group card-title inner list-group-item-heading">
+                                {{$rep->theatre->titre}}</h4>
+                            <p class="group inner list-group-item-text">
+                               {{$rep->theatre->desc}}</p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead">
+                                        {{$rep->prix}} €</p>
+                                </div>
+                               
+                                     @hasrole('super_admin')
 
                 
 
-                     {!! Form::open(['method' => 'DELETE', 'route' => ['salles.destroy', $rep->id]]) !!}
-<a href="{{ route( 'salles.edit', $rep->id ) }}" class="btn btn-success">Modifier</a>
+                     {!! Form::open(['method' => 'DELETE', 'route' => ['reps.destroy', $rep->id]]) !!}
+<a href="{{ route( 'reps.edit', $rep->id ) }}" class="btn btn-success">Modifier</a>
                 <button class="btn btn-danger">Suprimer</button>
 
                 {!! Form::close() !!}
@@ -68,38 +46,17 @@ Toutes les representations
                 @endhasrole
 
                 
-
-
-
-              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 @empty
+                  @endforelse
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-
-
-
-          </div>
-          <!-- /.col-md-6 -->
-
-            @empty
-
-            <div class="alert alert-warning" role="alert">
-              EMPTY
-            </div>
-          
-            @endforelse
-
-
-            @if( count($reps) > 0  )
-              {!! $reps->links() !!}
-            @endif()
-
-
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container -->
-
-
+</div>
 @endsection
 
 
