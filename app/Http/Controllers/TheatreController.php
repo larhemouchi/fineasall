@@ -12,9 +12,9 @@ class TheatreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request)
+    public function search($phrase)
     {
-        $theatres = Theatre::where('titre', 'LIKE', '%'.$request->search.'%')->paginate(9);
+        $theatres = Theatre::where('titre', 'LIKE', '%'.$phrase.'%')->paginate(9);
 
         return view('back.theatre.index', compact('theatres') );
     }

@@ -37,7 +37,10 @@ Route::get('/super-admin', 'HomeController@superAdmin')->name('users.super-admin
 
 Auth::routes();
 
-Route::post('/search-theatres', 'TheatreController@search')->name('theatres.search');
+Route::post('/search', 'ModelsController@search')->name('models.search');
+
+Route::get('/search-theatres/{phrase}', 'TheatreController@search')->name('theatres.search');
+Route::get('/search-salles/{phrase}', 'SalleController@search')->name('salles.search');
 
 Route::resource('theatres', 'TheatreController');
 

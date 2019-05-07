@@ -16,6 +16,14 @@ class SalleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function search($phrase)
+    {
+        $salles = Salle::where('nom', 'LIKE', '%'.$phrase.'%')->paginate(9);
+
+        return view('back.salle.index', compact('salles') );
+    }
+
+
     public function index()
     {
         $salles = Salle::paginate(9);

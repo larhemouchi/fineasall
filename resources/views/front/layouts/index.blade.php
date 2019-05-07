@@ -90,9 +90,11 @@
 
 
 
-{!! Form::open(['route' => 'theatres.search', 'method' => 'post', 'class' => 'form-inline mt-2 mt-md-0']) !!}
-
+{!! Form::open(['route' => 'models.search', 'method' => 'post', 'class' => 'form-inline mt-2 mt-md-0']) !!}
+{{ csrf_field() }}
             <input name="search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+
+            {{ Form::select('model', ['theatres' => 'theatre', 'salles' => 'salle' ], 'theatres', []) }}
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
 
