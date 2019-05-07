@@ -18,7 +18,7 @@ Modifier les informations d'un théatre
                 <p class="card-text">
 
                     @foreach($users as $user)
-                        <li><a href="{{route('users.mod-info', $user->id)}}">modify user {{ $user->email }}</a>  <a href="{{route('users.res', $user->id)}}">ses reservations</a></li>
+                        <li><a href="{{route('users.mod-info', $user->id)}}">modify user {{ $user->email }}</a>  <a href="{{route('users.res', $user->id)}}">ces reservations</a></li>
                     @endforeach
                 </p>
 

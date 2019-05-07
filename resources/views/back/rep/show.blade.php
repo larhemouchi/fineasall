@@ -27,26 +27,23 @@
                 <p class="card-text">
 
 
-                  prix : {{ $rep->prix }} € à{{ $rep->dateheure }}
+                  prix : {{ $rep->prix }} € Le {{  \Carbon\Carbon::parse($rep->dateheure)->format('l jS \\of F Y ')   }} à {{  \Carbon\Carbon::parse($rep->dateheure)->format('H:i')   }}
+
 
 
                 </p>
 
                 @hasrole('super_admin')
 
-                <a href="{{ route( 'reps.edit', $rep->id ) }}" class="card-link">Modifier</a>
-
-
-
-                <hr />
+               
 
 
                 {!! Form::open(['method' => 'DELETE', 'route' => ['reps.destroy', $rep->id]]) !!}
 
-
                 {{ csrf_field() }}
 
-                <button class="card-link">Suprimer</button>
+ <a href="{{ route( 'reps.edit', $rep->id ) }}" class="btn btn-success">Modifier</a>
+                <button class="btn btn-danger">Suprimer</button>
 
                 {!! Form::close() !!}
 

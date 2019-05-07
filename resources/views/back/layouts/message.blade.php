@@ -24,7 +24,7 @@ Modifier les informations d'un théatre
                 <h3> {{ $message }}.</h3>
 
                 <p>
-                  <a href="{{ route('welcome') }}">Retour</a>
+                  <a href="{{ route('/') }}">Retour</a>
                 </p>
 
                 

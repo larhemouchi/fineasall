@@ -6,104 +6,106 @@
 
 @section('content')
   <hr class="featurette-divider">
-<h3 class="text-center col-xs-12"> {{ $theatre->titre }}</h3>
-  <hr class="featurette-divider">
     <div class="content">
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
 
-          <div class="row">
-            <div class="card col-md-6">
-              <div class="card-body">
-                <h5 class="card-title"><a href="{{ route('theatres.show', $theatre->slug)}}">{{ $theatre->titre }}</a></h5>
+    <section class="container">
 
-                <hr />
+  <div class="row">
+    <div class="col-sm-4">
+ <h3 class="text-center"><strong> {{ $theatre->titre }} </strong> </h3>
 
-                <img class="img-fluid" src="{{ asset( Img::noimg('theatre', $theatre->img ) ) }}" />
-
-                <hr />
-
-                <p class="card-text">
-
-                	
-
-
-                  {{ $theatre->desc }}
+      <img src="{{ asset( Img::noimg('theatre', $theatre->img ) ) }}" alt="-" width="380" height="480" class="pb-15">
+            </a>
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-7">
+       <fieldset>
+            <p>
+        </p> &nbsp; </p>
 
 
-                </p>
+        <p>  {{$theatre->desc}}<br></p><p>
 
-                @hasrole('super_admin')
+    
+     </fieldset>
+  </div></div>
+<hr id="dates">
+      <h3>Les representations</h3>
+    
+  <div class="table-responsive ">
+      <table class="table table-striped table-condensed">
+        <tbody><tr>
+          <th width="25%">
+            Date
+          </th>
+          <th width="15%">
+            Heure
+          </th>
+          <th width="35%">
+          Addresse
+          </th>
+            <th width="20%">
+            Salle
+          </th>
+          <th width="15%">
+            Prix
+          </th>
 
-                <a href="{{ route( 'theatres.edit', $theatre->id ) }}" class="card-link">Modifier</a>
-
-                
-
-                <hr />
-
-
-                {!! Form::open(['method' => 'DELETE', 'route' => ['theatres.destroy', $theatre->id]]) !!}
-
-                {{ csrf_field() }}
-
-                <button class="card-link">Suprimer</button>
-
-                {!! Form::close() !!}
-
-                @endhasrole
-
-                
-
-
-
-              </div>
-            </div>
-
-            <div class="col-md-6">
-
-            <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Salle</th>
-            <th scope="col">Adress</th>
-            <th scope="col">Date</th>
-            <th scope="col">Heure</th>
-          </tr>
-        </thead>
-        <tbody>
-
+          <th class="hidden-xs" width="15%">
+            &nbsp;
+          </th>
+          
+        </tr>   
 
         @foreach( $theatre->reps as $rep)
 
         <tr>
-            <th scope="row"><a class="btn btn-primary" href="{{ route( 'res.init', $rep->id ) }}" role="button">Reserver</a></th>
-            <td>{{  $rep->salle->nom   }}</td>
-            <td>{{  $rep->salle->adress   }}</td>
             <td>{{  \Carbon\Carbon::parse($rep->dateheure)->format('l jS \\of F Y ')   }}</td>
             <td>{{  \Carbon\Carbon::parse($rep->dateheure)->format('H:i')   }}</td>
+            <td>{{  $rep->salle->adress   }}</td>
+            <td>{{  $rep->salle->nom   }}</td>
+            <td>{{  $rep->prix   }}</td>
+            
+            
+            <th scope="row"><a class="btn btn-primary" href="{{ route( 'res.init', $rep->id ) }}" role="button">Reserver</a></th>
           </tr>
 
 
         @endforeach
 
-        </tbody>
-      </table>
+        </table></div>  
 
+  <div class="text-left">
+    <a href="{{url('/')}}" class="btn btn-primary btn-warning">Retour</a>
+  </div>
 
-
-            </div>
-
-            </div>
-
-          </div>
-
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+</section>
+<footer>
+  <div class="container">
+    <div class="row">
+     
+      <div class="col-md-8 text-right">
+        <p>
+          <br>
+          <br>
+           Powered by : <a target="_blank" href="https://www.roxy-theatre.be"> Roxy-théatre</a>
+        </p>
+      </div>
     </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+</body>
 
 @endsection
 

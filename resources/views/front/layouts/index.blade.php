@@ -43,7 +43,7 @@
   <body>
     <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">{{ config('app.name') }}</a>
+    <a class="navbar-brand" href="{{'/'}}"> Roxy Theatre </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -66,15 +66,19 @@
                       @endcan
                     @else
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                          <a class="nav-link" href="{{ url('/') }}">Home</a>
+                      </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/theatres') }}">Theatres</a>
+                      </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/reps') }}">Representations</a>
+                      </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/salles') }}">Salles</a>
                       </li>
 
-                    <li class="nav-item">
-                          <a class="nav-link"  href="{{ url('/login') }}">Login</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="{{ url('/register') }}">Register</a>
-                      </li>
+                  
                         
                         
                     @endif

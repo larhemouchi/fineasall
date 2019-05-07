@@ -44,18 +44,19 @@ Modifier les informations d'un théatre
 
                 @hasrole('super_admin')
 
-                <a href="{{ route( 'theatres.edit', $theatre->id ) }}" class="card-link">Modifier</a>
+               
 
                 
 
-                <hr />
+               
 
 
                 {!! Form::open(['method' => 'DELETE', 'route' => ['theatres.destroy', $theatre->id]]) !!}
 
                 {{ csrf_field() }}
 
-                <button class="card-link">Suprimer</button>
+ <a href="{{ route( 'theatres.edit', $theatre->id ) }}" class=" btn btn-success">Modifier</a>
+                <button class=" btn btn-danger">Suprimer</button>
 
                 {!! Form::close() !!}
 

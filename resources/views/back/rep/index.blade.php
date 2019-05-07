@@ -21,7 +21,7 @@ Toutes les representations
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">{{ $rep->theatre->titre }} à {{ $rep->salle->nom }}</h5>
+                <h5 class="card-title">{{ $rep->theatre->titre }}</h5>
                 <div class="row">
                 <div class="col-xs-12">
                   <div class="row">
@@ -53,18 +53,15 @@ Toutes les representations
 
 
 
-                  {{ $rep->salle->adress }}
-
-
                 </p>
 
                 @hasrole('super_admin')
 
-                <a href="{{ route( 'salles.edit', $rep->id ) }}" class="card-link">Modifier</a>
+                
 
                      {!! Form::open(['method' => 'DELETE', 'route' => ['salles.destroy', $rep->id]]) !!}
-
-                <button class="card-link">Suprimer</button>
+<a href="{{ route( 'salles.edit', $rep->id ) }}" class="btn btn-success">Modifier</a>
+                <button class="btn btn-danger">Suprimer</button>
 
                 {!! Form::close() !!}
 

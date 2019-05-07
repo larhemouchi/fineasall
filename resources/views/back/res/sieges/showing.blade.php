@@ -313,12 +313,12 @@ $(document).ready(function() {
         /*
         {
           f: {
-            price   : 100,
+            price   : 50,
             classes : 'first-class', //your custom CSS class
             category: 'First Class'
           },
           e: {
-            price   : 40,
+            price   : 30,
             classes : 'economy-class', //your custom CSS class
             category: 'Economy Class'
           }         
