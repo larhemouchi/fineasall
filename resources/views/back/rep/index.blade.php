@@ -24,13 +24,13 @@ Toutes les representations
                         </div>
                         <div class="caption card-body">
                             <h4 class="group card-title inner list-group-item-heading">
-                                {{$rep->theatre->titre}}</h4>
+                          <strong> Le titre: </strong>{{$rep->theatre->titre}}</h4>
                             <p class="group inner list-group-item-text">
                                {{$rep->theatre->desc}}</p>
                             <div class="row">
                                 <div class="col-xs-12 col-md-6">
-                                    <p class="lead">
-                                        {{$rep->prix}} €</p>
+                                    
+                                      <strong> Le prix : </strong> {{$rep->prix}} €
                                 </div>
                                
                                      @hasrole('super_admin')

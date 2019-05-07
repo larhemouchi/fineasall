@@ -118,9 +118,7 @@ Modifier les informations d'un théatre
                   <img src="../admin/dist/img/credit/paypal2.png" alt="Paypal">
 
                   <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem
-                    plugg
-                    dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                    A tous moments, 7 jours sur 7 et 24 heures sur 24, accèdez à votre back-office client et gérez vos paiements, vos transactions et vos commandes.
                   </p>
                 </div>
                 <!-- /.col -->
@@ -132,7 +130,7 @@ Modifier les informations d'un théatre
                       <tbody>
                       <tr>
                         <th style="width:50%">Total:</th>
-                        <td>{{ $total }}</td>
+                        <td>{{ $total }} €</td>
                       </tr>
 
                     </tbody></table>

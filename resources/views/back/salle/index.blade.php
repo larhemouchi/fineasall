@@ -56,9 +56,6 @@ Modifier les informations d'un théatre
             </div>
 
 
-
-
-
           </div>
           <!-- /.col-md-6 -->
 

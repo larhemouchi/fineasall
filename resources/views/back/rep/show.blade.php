@@ -1,39 +1,82 @@
 @extends('front.layouts.index')
 
-
+@section('title')
+{{ $rep->theatre->titre }}
+@endsection
 
 @section('content')
-
-  <br class="featurette-divider">
-
-
+  <hr class="featurette-divider">
+  <div class="content">
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{ $rep->theatre->titre }}
-                </h5>
+    <section class="container">
+       <div class="row">
+    <div class="col-sm-4">
+ <h3 class="text-center"><strong> {{ $rep->theatre->titre }} </strong> </h3>
+
+                <img class="img-fluid" width="480" height="480" src="{{ asset( Img::noimg( 'theatre', $rep->theatre->img )  ) }}" />
+ </div>
+<div class="col-sm-1">
+    </div>
+    <div class="col-sm-7">
+       <fieldset>
+            <p>
+        </p> &nbsp; </p>
+
+{{ $rep->theatre->desc }}
+        
+
+    
+     </fieldset>
+  </div></div>
+  <div class="table-responsive ">
+      <table class="table table-striped table-condensed">
+        <tbody><tr>
+          <th width="25%">
+            Date
+          </th>
+          <th width="15%">
+            Heure
+          </th>
+          <th width="35%">
+          Addresse
+          </th>
+            <th width="20%">
+            Salle
+          </th>
+          <th width="15%">
+            Prix
+          </th>
+
+          <th class="hidden-xs" width="15%">
+            &nbsp;
+          </th>
+          
+        </tr>   
+
+      
+
+        <tr>
+            <td>{{  \Carbon\Carbon::parse($rep->dateheure)->format('l jS \\of F Y ')   }}</td>
+            <td>{{  \Carbon\Carbon::parse($rep->dateheure)->format('H:i')   }}</td>
+            <td>{{  $rep->salle->adress   }}</td>
+            <td>{{  $rep->salle->nom   }}</td>
+            <td>{{  $rep->prix   }}</td>
+            
+         @hasrole('regular')
+            <th scope="row"><a class="btn btn-primary" href="{{ route( 'res.init', $rep->id ) }}" role="button">Reserver</a></th>
+            @else
+            <th scope="row"><a class="btn btn-primary" href="{{ route( 'login') }}" role="button">Se connecter</a></th>
+            @endif
+                
+          </tr>
 
 
+      
 
-
-
-
-                <img class="img-fluid" src="{{ asset( Img::noimg( 'theatre', $rep->theatre->img )  ) }}" />
-
-                <hr />
-
-                <p class="card-text">
-
-
-                  prix : {{ $rep->prix }} € Le {{  \Carbon\Carbon::parse($rep->dateheure)->format('l jS \\of F Y ')   }} à {{  \Carbon\Carbon::parse($rep->dateheure)->format('H:i')   }}
-
-
-
-                </p>
-
-                @hasrole('super_admin')
+        </table></div> 
+                     @hasrole('super_admin')
 
                
 
@@ -51,23 +94,7 @@
 
                 @endif
 
-                @hasrole('regular')
-
-
-
-
-
-
-                    <a href="{{ route( 'res.init', $rep->id ) }}" class="card-link">Resérver</a>
-
-
-
-
-
-
-
-
-                @endif
+               
 
 
 
