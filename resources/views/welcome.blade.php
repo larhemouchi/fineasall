@@ -100,10 +100,20 @@
         @endif
 
             <div class="card-body">
+              <p><strong>{{ $rep->theatre->titre }} </strong></p>
               <p class="card-text">{{ $rep->prix }} €  {{ \Carbon\Carbon::parse( $rep->dateheure )->diffForHumans() }}</p>
+             
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="{{ route('reps.show', $rep->id) }}" type="button" class="btn btn-sm btn-primary">View</a>
+                  <a href="{{ route('reps.show', $rep->id) }}" type="button" class="btn btn-sm btn-warning">View</a>
+                  &nbsp;
+   
+         @if(\Auth::check())
+
+          <a href="{{ route( 'res.init', $rep->id ) }}" type="button" class="btn btn-sm btn-primary">Reserver</a>
+            
+            @endif
+                   
                   @can('modify_theater')
             <a href="{{ route('reps.edit', $rep->id) }}" type="button" class="btn btn-sm btn-success">Edit</a>
           @endcan
@@ -152,12 +162,12 @@
             @endif
             <div class="card-body">
             	@if($theatre->img != '')
-            	<p class="card-text">{{ $theatre->titre }}</p>
+            	<p class="card-text"><strong>{{ $theatre->titre }} </strong></p>
           		@endif
               <p class="card-text">{{ $theatre->desc }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="{{ route('theatres.show', $theatre->slug) }}" type="button" class="btn btn-sm btn-primary">View</a>
+                  <a href="{{ route('theatres.show', $theatre->slug) }}" type="button" class="btn btn-sm btn-warning">View</a>
                   @can('modify_theater')
 					  <a href="{{ route('theatres.edit', $theatre->id) }}" type="button" class="btn btn-sm btn-success">Edit</a>
 				  @endcan
@@ -208,10 +218,10 @@
          
 
             <div class="card-body">
-              <p class="card-text">Nom de salle :{{ $salle->nom }}</p>
+              <p class="card-text"><strong>Nom de salle :</strong>{{ $salle->nom }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="{{ route('salles.show', $salle->slug) }}" type="button" class="btn btn-sm btn-primary">View</a>
+                  <a href="{{ route('salles.show', $salle->slug) }}" type="button" class="btn btn-sm btn-warning">View</a>
                   @can('modify_theater')
 					  <a href="{{ route('salles.edit', $salle->id) }}" type="button" class="btn btn-sm btn-success">Edit</a>
 				  @endcan
