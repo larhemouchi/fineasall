@@ -1,39 +1,33 @@
-@extends('layouts.app')
 
-@section('content')
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lowin</title>
 
   <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-           <div class="lowin">
+</head>
+
+<body>
+    <div class="lowin">
         <div class="lowin-brand">
-            <img src="kodinger.jpg" alt="logo">
+           
+                    <img class="img-fluid" src="{{ asset('uploads/login/kodinger.png') }}" alt="logo"> />
         </div>
         <div class="lowin-wrapper">
             <div class="lowin-box lowin-login">
                 <div class="lowin-box-inner">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-                        
+                    <form>
                         <p>Sign in to continue</p>
-                        <div class="lowin-group form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="lowin-group">
                             <label>Email <a href="#" class="login-back-link">Sign in?</a></label>
-      <input type="email" autocomplete="email" name="email" value="{{ old('email') }}" class="lowin-input" required autofocus>
-  @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                          </span>
-                                @endif
+                            <input type="email" autocomplete="email" name="email" class="lowin-input">
                         </div>
-                        <div class="lowin-group password-group form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="lowin-group password-group">
                             <label>Password <a href="#" class="forgot-link">Forgot Password?</a></label>
-                            <input type="password" name="password" id="password" autocomplete="current-password" class="lowin-input" required>
-                             @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                            <input type="password" name="password" autocomplete="current-password" class="lowin-input">
                         </div>
                         <button class="lowin-btn login-btn">
                             Sign In
@@ -46,22 +40,47 @@
                 </div>
             </div>
 
-            
+            <div class="lowin-box lowin-register">
+                <div class="lowin-box-inner">
+                    <form>
+                        <p>Let's create your account</p>
+                        <div class="lowin-group">
+                            <label>Name</label>
+                            <input type="text" name="name" autocomplete="name" class="lowin-input">
+                        </div>
+                        <div class="lowin-group">
+                            <label>Email</label>
+                            <input type="email" autocomplete="email" name="email" class="lowin-input">
+                        </div>
+                        <div class="lowin-group">
+                            <label>Password</label>
+                            <input type="password" name="password" autocomplete="current-password" class="lowin-input">
+                        </div>
+                        <button class="lowin-btn">
+                            Sign Up
+                        </button>
+
+                        <div class="text-foot">
+                            Already have an account? <a href="" class="login-link">Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     
         <footer class="lowin-footer">
             Design By <a href="http://fb.me/itskodinger">@itskodinger</a>
         </footer>
     </div>
-  <script src="{{ asset('js/auth.js') }}"></script>
-    
+<link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+   <script src="{{ asset('js/auth.js') }}"></script>
     <script>
         Auth.init({
             login_url: '#login',
             forgot_url: '#forgot'
         });
     </script>
-        </div>
-    </div>
-</div>
-@endsection
+</body>
+</html>
+
+    
