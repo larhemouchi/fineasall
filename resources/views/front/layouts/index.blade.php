@@ -50,11 +50,6 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
 
-
-
-
-
-
                      
                         <li class="nav-item">
                           <a class="nav-link" href="{{ url('/') }}">Home</a>
@@ -68,12 +63,6 @@
                         <li class="nav-item">
                           <a class="nav-link" href="{{ url('/salles') }}">Salles</a>
                       </li>
-
-                  
-                        
-                
-
-
 
       </ul>
 

@@ -63,7 +63,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $regular->givePermissionTo(['reserve' ]);
 
-        User::whereNotIn('id' , [1, 2])->each(function ($item, $key) {
+        User::whereNotIn('id' , [1,2])->each(function ($item, $key) {
 
             $item->assignRole('regular');
         });

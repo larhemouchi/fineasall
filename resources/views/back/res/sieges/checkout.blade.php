@@ -1,4 +1,4 @@
-@extends('back.layouts.index')
+@extends('front.layouts.index')
 
 @section('title')
 Modifier les informations d'un théatre

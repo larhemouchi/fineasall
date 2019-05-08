@@ -1,23 +1,18 @@
 
-@extends('back.layouts.index')
+@extends('front.layouts.index')
 
 @section('title')
-Modifier les informations d'un théatre
+les informations de la carte de paiement
 @endsection
 
 @section('content')
-
+ <hr class="featurette-divider">
 <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-
-
-
-
+               <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
             <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+              <div class="card-body ">
+                <h5 class="card-title">Les coordonnées de mode de paiement</h5>
 
                 <p class="card-text">
 

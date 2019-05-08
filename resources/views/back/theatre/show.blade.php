@@ -70,12 +70,15 @@
             <td>{{  $rep->salle->nom   }}</td>
             <td>{{  $rep->prix   }}</td>
             
-            
-             @hasrole('regular')
+             @if(\Auth::check())
             <th scope="row"><a class="btn btn-primary" href="{{ route( 'res.init', $rep->id ) }}" role="button">Reserver</a></th>
             @else
+            
             <th scope="row"><a class="btn btn-primary" href="{{ route( 'login') }}" role="button">Se connecter</a></th>
             @endif
+
+
+            
 
 
         @endforeach

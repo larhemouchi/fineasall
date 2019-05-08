@@ -19,7 +19,7 @@ $total +=  $i->rep->prix ;
 
 
 @component('mail::message')
-#Salam
+
 <h1>Informations sur the reservations sur {{ config('app.name') }}.com</h1>
 
 
@@ -61,7 +61,7 @@ $total +=  $i->rep->prix ;
 
 
 @component('mail::button', ['url' => 'http://127.0.0.1:8000/reps/'. $info[0]->rep->id])
-Regarder la representation
+Voir la representation
 @endcomponent
 
 Merci,<br>
