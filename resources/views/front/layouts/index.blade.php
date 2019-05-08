@@ -14,9 +14,15 @@
 
     <!-- Bootstrap core CSS -->
 <link href="{{ asset('/admin/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet" >
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
     @yield('styles')
@@ -40,7 +46,7 @@
     <!-- Custom styles for this template -->
     <link href="/front/carousel.css" rel="stylesheet">
   </head>
-  <body>
+ 
     <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="{{'/'}}"> Roxy Theatre </a>
@@ -49,6 +55,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
+
+
+
+
+
 
                      
                         <li class="nav-item">
@@ -64,10 +75,16 @@
                           <a class="nav-link" href="{{ url('/salles') }}">Salles</a>
                       </li>
 
+                  
+                        
+                
+
+
+
       </ul>
 
 
-
+<ul class="nav navbar-nav ml-auto">
 
 {!! Form::open(['route' => 'models.search', 'method' => 'post', 'class' => 'form-inline mt-2 mt-md-0']) !!}
 {{ csrf_field() }}
@@ -77,51 +94,39 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li class="nav-item"><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle nav-item" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->nom }} {{ Auth::user()->prenom }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-
-                                <li class="nav-item" >
-                                        <a href="{{ route('users.res', Auth::id()) }}">
-                                          Mes reservations
-                                        </a>
-
-                                    </li>
-
-                                    <li class="nav-item" >
-                                        <a href="{{ route('users.mod-info', Auth::id()) }}">
-                                          Modifier mes informations
-                                        </a>
-
-                                    </li>
-                                    <li class="nav-item" >
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+               <div class="collapse navbar-collapse" id="navbarSupportedContent-3">
+        <ul class="navbar-nav mr-auto">
+          
+          
+        </ul>
+         <ul class="nav navbar-nav ml-auto">
+            @if (Auth::guest())
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('register')}}"><span class="fas fa-user"></span> Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('login')}}"><span class="fas fa-sign-in-alt"></span> Login</a>
+      </li>
+    @else
+         <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i> Profile </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+          <a class="dropdown-item" href="{{ route('users.mod-info', Auth::id()) }}">Mon compte</a>
+           <a class="dropdown-item" href="{{ route('users.res', Auth::id()) }}">Mes réservations</a>
+          <a class="dropdown-item" href="{{ route('logout')}}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Log out</a>
+                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
+        </div>
+      </li>
+      </li>
+      @endif
+    </ul>
 
-
-
+      </div>
 
 
 
@@ -155,5 +160,5 @@
 
 
 
-</body>
+
 </html>
