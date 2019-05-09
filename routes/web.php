@@ -16,7 +16,7 @@
 Route::get('/test', function(){
 
 
-
+    return count(App\Res::where('rep_id', 44)->get() );
 
 
 });

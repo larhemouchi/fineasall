@@ -146,7 +146,17 @@ class TheatreController extends Controller
 
         foreach($reps as $rep){
 
-            Res::where('rep_id', $rep->id)->delete();
+            $res = Res::where('rep_id', $rep->id)->get();
+
+            
+
+            if(count($res) > 0) {
+
+                $res->delete();
+
+                
+
+            }
 
 
         }

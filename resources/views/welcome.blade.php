@@ -28,22 +28,22 @@
 
 
       <div class="carousel-inner">
-      <div class="carousel-item active">
+        <div class="carousel-item active">
 
 
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#60a3bc"/></svg>
-        <div class="container">
-          <div class="carousel-caption text-left">
-            <h1>WELCOM TO ROXY THEATRE.</h1>
-            <p>La meilleur platforme des theatres.</p>
-            <p><a class="btn btn-lg btn-primary" href="{{ Auth::check() ? route('home') : route('register') }}" role="button">{{ Auth::check() ? 'Entrer' : "S'enregistrer" }}</a></p>
+          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#60a3bc"/></svg>
+          <div class="container">
+            <div class="carousel-caption text-left">
+              <h1>WELCOM TO ROXY THEATRE.</h1>
+              <p>La meilleur platforme des theatres.</p>
+              <p><a class="btn btn-lg btn-primary" href="{{ Auth::check() ? route('home') : route('register') }}" role="button">{{ Auth::check() ? 'Entrer' : "S'enregistrer" }}</a></p>
+            </div>
           </div>
         </div>
-      </div>
 
 <!--     -->
     @forelse($reps as $rep)
-    <div class="carousel-inner">
+
       <div class="carousel-item">
       	@if($rep->theatre->img != '')
         	<img class="img-fluid" src="{{ asset('uploads/theatre/'. $rep->theatre->img) }}" />
@@ -66,7 +66,6 @@
 
       @endforelse
 
-      </div>
     </div>
     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -173,7 +172,7 @@
 				  @endcan
 
                 </div>
-                <small class="text-muted">{{\Carbon\Carbon::parse( $rep->dateheure )->diffForHumans() }}</small>
+                <small class="text-muted">{{\Carbon\Carbon::parse( $theatre->dateheure )->diffForHumans() }}</small>
               </div>
             </div>
           </div>

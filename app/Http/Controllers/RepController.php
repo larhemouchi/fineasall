@@ -203,7 +203,15 @@ class RepController extends Controller
      */
     public function destroy(Rep $rep)
     {
-        Res::where('rep_id', $rep->id)->delete();
+        $res = Res::where('rep_id', $rep->id)->delete();
+
+        if(count($res) > 0) {
+
+            $res->delete();
+
+            
+
+        }
 
         Rep::destroy($rep->id);
 
