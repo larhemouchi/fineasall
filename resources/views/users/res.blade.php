@@ -2,8 +2,12 @@
 @extends($upper_layout.'.layouts.index')
 @section('content')
 
+<hr class="featurette-divider">
+<h3 class="text-center">Mes réservations</h3>
+<hr class="featurette-divider">
+
 <div class="table-responsive ">
-  <table class="table table-striped table-condensed">
+  <table class="table table-sm">
     <thead>
         <tr>
           <th width="20%">
@@ -28,20 +32,9 @@
     
 </tr>  </thead> 
 
-
-@forelse( Auth::user()->res as $res )
-<tr>
-    <td>{{$res->siege->num}}</td>
-    <td>{{$res->rep->theatre->titre}}</td>
-    <td>{{$res->rep->salle->nom}}</td>
-    <td>{{$res->rep->prix }}</td>
-    <td>{{$res->rep->dateheure }}</td>
-    
-    <td>
-
-    </tr>
+<tbody>
     @forelse( Auth::user()->res as $res )
-    <tr><tbody>
+    <tr>
         <td>{{$res->siege->num}}</td>
         <td>{{$res->rep->theatre->titre}}</td>
         <td>{{$res->rep->salle->nom}}</td>
@@ -50,6 +43,9 @@
         
         
     </tr>
+    @empty
+
+    @endforelse
 
 
     

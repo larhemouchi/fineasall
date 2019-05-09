@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Theatre;
+use App\{Theatre, rep, Res};
 use Illuminate\Http\Request;
 use Img;
 class TheatreController extends Controller
@@ -141,6 +141,18 @@ class TheatreController extends Controller
     {
 
         Img::delete($theatre,'theatre', 'titre');
+
+        $reps = Rep::where('theatre_id', $theatre->id)->get();
+
+        foreach($reps as $rep){
+
+            Res::where('rep_id', $rep->id)->delete();
+
+
+        }
+
+        $reps->delete();
+
 
         Theatre::destroy($theatre->id);
 

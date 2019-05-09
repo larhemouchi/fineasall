@@ -45,6 +45,16 @@ Toutes les representations
 
                 @endhasrole
 
+                @hasrole( 'regular' )
+
+                    <a href="{{ route('res.init', $rep->id) }}">Réserver</a>
+
+                @endhasrole
+
+                |
+
+                <a href="{{ route('reps.show', $rep->id) }}">Voir</a>
+
                 
                             </div>
                         </div>

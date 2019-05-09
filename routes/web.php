@@ -41,6 +41,7 @@ Route::post('/search', 'ModelsController@search')->name('models.search');
 
 Route::get('/search-theatres/{phrase}', 'TheatreController@search')->name('theatres.search');
 Route::get('/search-salles/{phrase}', 'SalleController@search')->name('salles.search');
+Route::get('/search-reps/{phrase}', 'RepController@search')->name('reps.search');
 
 Route::resource('theatres', 'TheatreController');
 

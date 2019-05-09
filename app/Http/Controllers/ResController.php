@@ -8,6 +8,7 @@ use Auth;
 use Mail;
 
 use App\Mail\ReservedMail;
+use App\Mail\ResMail;
 
 class ResController extends Controller
 {
@@ -277,7 +278,7 @@ class ResController extends Controller
         // throw a message if payed
 
 
-        Mail::to(Auth::user()->email )->send( new ReservedMail( $info ) );
+        Mail::to(Auth::user()->email )->send( new ResMail( $info ) );
 
 
         $message = 'Conglation Payé avec succes';

@@ -285,6 +285,7 @@ return [
         'Money' => App\Helpers\Usability\Money::class,
         'Img' => App\Helpers\Usability\Img::class,
         'Voiding' => App\Helpers\Usability\Voiding::class,
+        'Carbon' => 'Carbon\Carbon',
 
     ],
 

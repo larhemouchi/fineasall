@@ -2,12 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\{Rep, Theatre, Salle};
+use App\{Rep, Res, Theatre, Salle};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RepController extends Controller
 {
+
+
+    public function search($phrase)
+    {
+        $reps = Rep::all()->take(0);
+
+        
+
+        $salles = Salle::where('nom', 'LIKE', '%'.$phrase.'%')->get();
+
+        foreach($salles as $salle){
+
+
+            foreach($salle->reps as $rep){
+
+                $reps->push( $rep );
+
+            }
+            
+
+        }
+
+        unset($rep);
+
+        
+
+        $theatres = Theatre::where('titre', 'LIKE', '%'.$phrase.'%')->get();
+
+        foreach($theatres as $theatre){
+
+            foreach($theatre->reps as $rep){
+
+                $reps->push( $rep );
+
+            }
+
+        }
+
+        unset($rep);
+
+
+        return view('back.rep.index', compact('reps') );
+    }
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -17,14 +62,7 @@ class RepController extends Controller
     private var $salles = Salle::get(['id', 'nom'])->pluck('nom', 'id');
     private var $theatres = Theatre::get(['id', 'titre'])->pluck('titre', 'id');
 */
-    public function search(Request $request)
-    {
 
-
-
-
-        return view('back.rep.index', compact('reps') );
-    }
 
     public function index()
     {
@@ -40,6 +78,8 @@ class RepController extends Controller
      */
     public function create()
     {
+
+
         $salles = Salle::get(['id', 'nom'])->pluck('nom', 'id');
         $theatres = Theatre::get(['id', 'titre'])->pluck('titre', 'id');
 
@@ -50,7 +90,7 @@ class RepController extends Controller
 
 
 
-        return view('back.rep.create', compact('theatres', 'salles', 'dt'));
+        return view('back.rep.create', compact('theatres', 'salles', 'dt', 'carbon'));
     }
 
     /**
@@ -86,15 +126,21 @@ class RepController extends Controller
     public function show(Rep $rep)
     {
 
+
+
         if(! $rep){
 
             return redirect()->route('welcome');
 
         }
 
+        Carbon::setLocale('fr_FR');
+
+        $carbon = Carbon::parse($rep->dateheure);
 
 
-        return view('back.rep.show', compact( 'rep' ) );
+
+        return view('back.rep.show', compact( 'rep', 'carbon' ) );
     }
 
     /**
@@ -138,7 +184,14 @@ class RepController extends Controller
             return redirect()->route('reps.show', $rep->id);
 
         }else{
-            return ':/';
+
+        $message = 'Erreur modification';
+        $state = 'error';
+
+        return view('back.layouts.message', compact( 'message', 'state' ));
+
+
+
         }
     }
 
@@ -150,9 +203,16 @@ class RepController extends Controller
      */
     public function destroy(Rep $rep)
     {
+        Res::where('rep_id', $rep->id)->delete();
+
         Rep::destroy($rep->id);
 
-        return 'DESTROYED SUCCEFULLY';
+        
+        $message = 'Suprimé avec success';
+        $state = 'success';
+
+        return view('back.layouts.message', compact( 'message', 'state' ));
+
     }
 
     

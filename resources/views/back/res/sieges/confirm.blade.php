@@ -8,9 +8,13 @@ les informations de la carte de paiement
 @section('content')
  <hr class="featurette-divider">
 <section class="content">
-               <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-            <div class="card">
+              <div class="row">
+
+              <div class="nidden-xs col-md-2"></div>
+
+              <div class="col-md-8">
+
+              <div class="card">
               <div class="card-body ">
                 <h5 class="card-title">Les coordonnées de mode de paiement</h5>
 
@@ -88,7 +92,17 @@ les informations de la carte de paiement
                 </p>
 
               </div>
-            </div>
+
+
+
+              </div>
+              
+              
+              </div>
+              
+
+
+           
 
 
 

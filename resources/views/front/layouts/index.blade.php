@@ -85,14 +85,25 @@
 
 
 <ul class="nav navbar-nav ml-auto">
-
 {!! Form::open(['route' => 'models.search', 'method' => 'post', 'class' => 'form-inline mt-2 mt-md-0']) !!}
 {{ csrf_field() }}
-            {{ Form::select('model', ['theatres' => 'theatre', 'salles' => 'salle' ], 'theatres', []) }}
-            <input name="search" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+<div class="input-group mb-2 mr-sm-2">
+<div class="input-group-prepend">
+<input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
 
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+    
+    </div>
+    {{ Form::select('model', ['reps'=>'representations','theatres' => 'theatre', 'salles' => 'salle' ], 'theatres', ['class'=>'form-control']) }}
+
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+
+  </div>
+  </form>
+
+           
+
+
 
                <div class="collapse navbar-collapse" id="navbarSupportedContent-3">
         <ul class="navbar-nav mr-auto">

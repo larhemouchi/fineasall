@@ -123,9 +123,25 @@ class SalleController extends Controller
      */
     public function destroy(Salle $salle)
     {
-        Salle::destroy($salle->id);
+        $reps = Rep::where('salle_id', $salle->id)->get();
 
-       return redirect('/');
+        foreach($reps as $rep){
+
+            Res::where('rep_id', $rep->id)->delete();
+
+
+        }
+
+        $reps->delete();
+
+
+
+        Salle::destroy($salle->id);
+        
+        $message = 'DESTROYED SUCCEFULLY';
+        $state = 'success';
+
+        return view('back.layouts.message', compact( 'message', 'state' ));
     }
 
 

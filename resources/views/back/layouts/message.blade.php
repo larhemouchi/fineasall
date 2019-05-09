@@ -1,4 +1,4 @@
-@extends('back.layouts.index')
+@extends('front.layouts.index')
 
 @section('title')
 Modifier les informations d'un théatre
@@ -24,7 +24,7 @@ Modifier les informations d'un théatre
                 <h3> {{ $message }}.</h3>
 
                 <p>
-                  <a href="{{ route('/') }}">Retour</a>
+                  <a href="{{ route('welcome') }}">Retour</a>
                 </p>
 
                 

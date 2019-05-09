@@ -1,3 +1,5 @@
+
+
 @extends('front.layouts.index')
 
 @section('title')
@@ -30,6 +32,7 @@
     
      </fieldset>
   </div></div>
+  <h3>Plus dinfo</h3>
   <div class="table-responsive ">
       <table class="table table-striped table-condensed">
         <tbody><tr>
@@ -58,8 +61,9 @@
       
 
         <tr>
-            <td>{{  \Carbon\Carbon::parse($rep->dateheure)->format('l jS \\of F Y ')   }}</td>
-            <td>{{  \Carbon\Carbon::parse($rep->dateheure)->format('H:i')   }}</td>
+
+            <td>{{  $carbon->format('d-m-Y ')  }}</td>
+            <td>{{  $carbon->format('H:i')   }}</td>
             <td>{{  $rep->salle->adress   }}</td>
             <td>{{  $rep->salle->nom   }}</td>
             <td>{{  $rep->prix   }}</td>
@@ -94,6 +98,13 @@
 
 
                 @endif
+
+
+                @hasrole( 'regular' )
+
+                    <a href="{{ route('res.init', $rep->id) }}">Réserver</a>
+
+                @endhasrole
 
                
 
