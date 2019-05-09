@@ -89,7 +89,7 @@ Modifier les informations dun utilisateur
 
 				  <button type="submit" class="btn btn-primary">Submit</button>
 
-
+<a href="{{url('/')}}" class="btn btn-warning">Retour</a>
 
                   {!! Form::close() !!}
 

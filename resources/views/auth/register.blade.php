@@ -1,148 +1,103 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Adresse E-Mail</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
 
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirmer Password</label>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lowin</title>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
+    <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+</head>
 
-                        <hr />
+<body>
+    <div class="lowin">
+        <div class="lowin-brand">
 
-                        <div class="form-group{{ $errors->has('pseudo') ? ' has-error' : '' }}">
-                            <label for="pseudo" class="col-md-4 control-label">pseudo</label>
+            <img class="img-fluid" src="{{ asset('uploads/login/kodinger.png') }}" alt="logo"> />
+        </div>
+        <div class="lowin-wrapper">
 
-                             <div class="col-md-6">
-                                <input id="pseudo" type="text" class="form-control" name="pseudo" value="{{ old('pseudo') }}" required autofocus>
+            <div class="lowin-box lowin-register">
+            <div class="lowin-box-inner">
 
-                                @if ($errors->has('pseudo'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('pseudo') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
+                <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    {{ csrf_field() }}
+
+                    <p>Let's create your account</p>
+                    <div class="lowin-group">
+                        <label>Email</label>
+                        <input type="email" autocomplete="email" name="email" class="lowin-input">
+                    </div>
+                    <div class="lowin-group">
+                        <label>Password</label>
+                        <input type="password" name="password" autocomplete="current-password" class="lowin-input">
+                    </div>
+
+
+                    <div class="lowin-group">
+                        <label for="password-confirm">Confirmer Password</label>
+
+                        <input id="password-confirm" type="password" class="lowin-input" name="password_confirmation" required>
                         
-
-                        
-
-
-
-
-                    <div class="form-group{{ $errors->has('nom') ? ' has-error' : '' }}">
-                            <label for="nom" class="col-md-4 control-label">Nom</label>
-
-                            <div class="col-md-6">
-                                <input id="nom" type="text" class="form-control" name="nom" value="{{ old('nom') }}" required autofocus>
-
-                                @if ($errors->has('nom'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nom') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-  <div class="form-group{{ $errors->has('prenom') ? ' has-error' : '' }}">
-                            <label for="prenom" class="col-md-4 control-label">Prenom</label>
-
-                            <div class="col-md-6">
-                                <input id="prenom" type="text" class="form-control" name="prenom" value="{{ old('prenom') }}" required autofocus>
-
-                                @if ($errors->has('prenom'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('prenom') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
- <div class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
-                            <label for="sex" class="col-md-4 control-label">Sex</label>
-
-                            <div class="col-md-6">
-                                {{ Form::select('sex', [True => 'Homme', False => 'Femme' ], old('sex'), ['Ton sex' => 'Pick a size...', 'required' => true, 'class' => 'form-control']) }}
-
-
-                                @if ($errors->has('sex'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('sex') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        
-
-
-  <div class="form-group{{ $errors->has('tel') ? ' has-error' : '' }}">
-                            <label for="tel" class="col-md-4 control-label">Téléphone</label>
-
-                            <div class="col-md-6">
-                                <input id="tel" type="text" class="form-control" name="tel" value="{{ old('tel') }}" required autofocus>
-
-                                @if ($errors->has('tel'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('tel') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
-            </div>
+                <div class="lowin-group">
+                    <label>pseudo</label>
+                    <input type="text" name="pseudo" autocomplete="pseudo" class="lowin-input">
+                </div>
+                <div class="lowin-group">
+                    <label>Nom</label>
+                    <input type="text" name="nom" autocomplete="nom" class="lowin-input">
+                </div>
+                <div class="lowin-group">
+                    <label>Prenom</label>
+                    <input type="text" name="prenom" autocomplete="prenom" class="lowin-input">
+                </div>
+                <div class="lowin-group">
+                    <label for="sex" class="col-md-4 control-label">Sex</label>
+                    {{ Form::select('sex', [True => 'Homme', False => 'Femme' ], old('sex'), ['Ton sex' => 'Pick a size...', 'required' => true, 'class' => 'form-control']) }}
+
+
+                    @if ($errors->has('sex'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('sex') }}</strong>
+                    </span>
+                    @endif
+                </div>
+                <div class="lowin-group">
+                    <label>telephone</label>
+                    <input type="text" name="tel" autocomplete="tel" class="lowin-input">
+                </div>
+
+                <button class="lowin-btn">
+                    Sign Up
+                </button>
+
+                <div class="text-foot">
+                    Already have an account? <a href="{{ route('login') }}" class="login-link">Login</a>
+                </div>
+            </form>
         </div>
     </div>
+           
+
+        
 </div>
-@endsection
+
+<footer class="lowin-footer">
+    Design By <a href="http://fb.me/itskodinger">@itskodinger</a>
+</footer>
+</div>
+<link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+<script src="{{ asset('js/auth.js') }}"></script>
+<script>
+Auth.init({
+    login_url: '#register',
+    forgot_url: '#forgot'
+});
+</script>
+</body>
+</html>
+
+

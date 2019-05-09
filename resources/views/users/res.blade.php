@@ -1,69 +1,69 @@
 
 @extends($upper_layout.'.layouts.index')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"></div>
 
-                <div class="panel-body">
+<div class="table-responsive ">
+  <table class="table table-striped table-condensed">
+    <thead>
+        <tr>
+          <th width="20%">
+             Numero de Siege
+         </th>
+         <th width="15%">
+            Titre de representation
+        </th>
+        <th width="35%">
+          Nom de salle
+      </th>
+      <th width="20%">
+         Prix de place
+     </th>
+     <th width="15%">
+        Heure de representation
+    </th>
 
-
-
-
-
-                <table class="table">
-                    <ul>
-
-
-
-                      
-
-                        <head>
-    <tr>
-        <th>Numero de Siege</th>
-        <th>Titre de representation</th>
-        <th>Nom de salle </th>
-        <th>Prix de place </th>
-        <th>Heure de representation</th>
-       
-        
-    </tr>
-</head>
-<body>
+    <th class="hidden-xs" width="15%">
+        &nbsp;
+    </th>
     
-       @forelse( $user->res as $res )
-    <tr>
+</tr>  </thead> 
+
+
+@forelse( Auth::user()->res as $res )
+<tr>
+    <td>{{$res->siege->num}}</td>
+    <td>{{$res->rep->theatre->titre}}</td>
+    <td>{{$res->rep->salle->nom}}</td>
+    <td>{{$res->rep->prix }}</td>
+    <td>{{$res->rep->dateheure }}</td>
+    
+    <td>
+
+    </tr>
+    @forelse( Auth::user()->res as $res )
+    <tr><tbody>
         <td>{{$res->siege->num}}</td>
         <td>{{$res->rep->theatre->titre}}</td>
         <td>{{$res->rep->salle->nom}}</td>
         <td>{{$res->rep->prix }}</td>
         <td>{{$res->rep->dateheure }}</td>
-       
-        <td>
-
-</tr>
-
+        
+        
+    </tr>
 
 
-                        
-                        @empty
-                     
+    
 
-                        @endforelse
-
-
-                        </ul>
+</tbody> 
 </table>
 
-                    
 
 
 
-                </div>
-            </div>
-        </div>
-    </div>
+
+
+</div>
+</div>           
+</div>
 </div>
 @endsection
