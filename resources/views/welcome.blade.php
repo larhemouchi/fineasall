@@ -16,7 +16,9 @@
 
 
       @forelse($reps as $rep)
-      <li data-target="#myCarousel" data-slide-to="{{ $loop->index + 1 }}" class="{{$loop->first?'active': ''}}"></li>
+
+      <li data-target="#myCarousel" data-slide-to="{{ $loop->index + 1 }}" class="{{$loop->first?'active': ''}}">
+      </li>
 
 
       @empty
@@ -25,7 +27,7 @@
 
 
     </ol>
-
+  
 
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -33,10 +35,10 @@
 
           <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#60a3bc"/></svg>
           <div class="container">
-            <div class="carousel-caption text-left">
+            <div class="carousel-caption text-center">
               <h1>WELCOM TO ROXY THEATRE.</h1>
               <p>La meilleur platforme des theatres.</p>
-              <p><a class="btn btn-lg btn-primary" href="{{ Auth::check() ? route('home') : route('register') }}" role="button">{{ Auth::check() ? 'Entrer' : "S'enregistrer" }}</a></p>
+              <p><a class="btn btn-lg btn-primary" href="{{ Auth::check() ? route('welcome') : route('register') }}" role="button">{{ Auth::check() ? 'Bienvenue' : "S'enregistrer" }}</a></p>
             </div>
           </div>
         </div>
@@ -104,7 +106,7 @@
              
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="{{ route('reps.show', $rep->id) }}" type="button" class="btn btn-sm btn-warning">View</a>
+                  <a href="{{ route('reps.show', $rep->id) }}" type="button" class="btn btn-sm btn-warning">Afficher</a>
                   &nbsp;
    
          @if(\Auth::check())
@@ -112,9 +114,9 @@
           <a href="{{ route( 'res.init', $rep->id ) }}" type="button" class="btn btn-sm btn-primary">Reserver</a>
             
             @endif
-                   
+                  &nbsp; 
                   @can('modify_theater')
-            <a href="{{ route('reps.edit', $rep->id) }}" type="button" class="btn btn-sm btn-success">Edit</a>
+            <a href="{{ route('reps.edit', $rep->id) }}" type="button" class="btn btn-sm btn-success">Editer</a>
           @endcan
 
                 </div>
@@ -166,9 +168,10 @@
               <p class="card-text">{{ $theatre->desc }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="{{ route('theatres.show', $theatre->slug) }}" type="button" class="btn btn-sm btn-warning">View</a>
+                  <a href="{{ route('theatres.show', $theatre->slug) }}" type="button" class="btn btn-sm btn-warning">Afficher</a>
+                  &nbsp;
                   @can('modify_theater')
-					  <a href="{{ route('theatres.edit', $theatre->id) }}" type="button" class="btn btn-sm btn-success">Edit</a>
+					  <a href="{{ route('theatres.edit', $theatre->id) }}" type="button" class="btn btn-sm btn-success">Editer</a>
 				  @endcan
 
                 </div>
@@ -220,9 +223,9 @@
               <p class="card-text"><strong>Nom de salle :</strong>{{ $salle->nom }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="{{ route('salles.show', $salle->slug) }}" type="button" class="btn btn-sm btn-warning">View</a>
+                  <a href="{{ route('salles.show', $salle->slug) }}" type="button" class="btn btn-sm btn-warning">Afficher</a>
                   @can('modify_theater')
-					  <a href="{{ route('salles.edit', $salle->id) }}" type="button" class="btn btn-sm btn-success">Edit</a>
+					  <a href="{{ route('salles.edit', $salle->id) }}" type="button" class="btn btn-sm btn-success">Editer</a>
 				  @endcan
 
                 </div>

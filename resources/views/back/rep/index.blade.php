@@ -47,13 +47,13 @@ Toutes les representations
 
                 @hasrole( 'regular' )
 
-                    <a href="{{ route('res.init', $rep->id) }}">Réserver</a>
+                    <a href="{{ route('res.init', $rep->id) }}" class="btn btn-primary" >Réserver</a>
 
                 @endhasrole
 
-                |
+               &nbsp;
 
-                <a href="{{ route('reps.show', $rep->id) }}">Voir</a>
+                <a href="{{ route('reps.show', $rep->id) }}" class="btn btn-warning" >Voir</a>
 
                 
                             </div>

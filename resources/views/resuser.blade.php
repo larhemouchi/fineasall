@@ -6,7 +6,7 @@ Mes reservation
 
 @section('content')
 
- 
+ <hr class="featurette-divider">
 
  <div class="table-responsive ">
       <table class="table table-striped table-condensed">

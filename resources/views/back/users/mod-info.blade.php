@@ -23,9 +23,9 @@ Modifier les informations dun utilisateur
 @section('content')
 
 
+<hr class="featurette-divider">
 
-
-
+<h2 class="text-center">Les informations personnelles</h2>
     <div class="content">
       <div class="container-fluid">
         <div class="row">
@@ -34,7 +34,7 @@ Modifier les informations dun utilisateur
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Informations personnelles</h5>
 
                 <p class="card-text">
 

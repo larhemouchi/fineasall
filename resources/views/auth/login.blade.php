@@ -90,7 +90,7 @@
                 </div>
                 <div class="lowin-group">
                     <label for="sex" class="col-md-4 control-label">Sex</label>
-                    {{ Form::select('sex', [True => 'Homme', False => 'Femme' ], old('sex'), ['Ton sex' => 'Pick a size...', 'required' => true, 'class' => 'form-control']) }}
+                    {{ Form::select('sex', [True => 'Homme', False => 'Femme' ], old('sex'), ['Ton sex' => 'Pick a size...', 'required' => true, 'class' => 'lowin-input']) }}
 
 
                     @if ($errors->has('sex'))
@@ -117,7 +117,7 @@
 </div>
 
 <footer class="lowin-footer">
-    Design By <a href="http://fb.me/itskodinger">@itskodinger</a>
+    Design By <a href="http://www.isfce.org">@RoxyTheatre</a>
 </footer>
 </div>
 <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
