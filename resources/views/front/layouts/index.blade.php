@@ -66,11 +66,12 @@
                           <a class="nav-link" href="{{ url('/') }}">Home</a>
                       </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ url('/theatres') }}">Theatres</a>
-                      </li>
-                        <li class="nav-item">
                           <a class="nav-link" href="{{ url('/reps') }}">Representations</a>
                       </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/theatres') }}">Theatres</a>
+                      </li>
+                      
                         <li class="nav-item">
                           <a class="nav-link" href="{{ url('/salles') }}">Salles</a>
                       </li>
@@ -128,7 +129,9 @@
         <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
           <a class="dropdown-item" href="{{ route('users.mod-info', Auth::id()) }}">Mon compte</a>
            <a class="dropdown-item" href="{{ route('users.res', Auth::id()) }}">Mes réservations</a>
-
+@hasrole('super_admin')
+<a class="dropdown-item" href="{{('super-admin')}}">Dashboard </a>
+  @endhasrole
           <a class="dropdown-item" href="{{ route('logout')}}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Log out</a>
                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

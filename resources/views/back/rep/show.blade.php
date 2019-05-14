@@ -100,25 +100,13 @@
                 @endif
 
 
-                @hasrole( 'regular' )
-
-                    <a href="{{ route('res.init', $rep->id) }}">Réserver</a>
-
-                @endhasrole
-
+            <div class="text-left">
+    <a href="{{url('/')}}" class="btn btn-primary btn-warning">Retour</a>
+  </div>
                
-
-
-
-
-
-
-
-
-
-
-
               </div>
+    
+
             </div>
 
           </div>

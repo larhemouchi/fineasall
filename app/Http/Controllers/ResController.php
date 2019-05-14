@@ -10,6 +10,10 @@ use Mail;
 use App\Mail\ReservedMail;
 use App\Mail\ResMail;
 
+//mn ba3d dir composer dump autoload
+//mn ba3d dir  php artisan config:cache
+
+
 class ResController extends Controller
 {
     /**
@@ -277,11 +281,11 @@ class ResController extends Controller
 
         // throw a message if payed
 
+        //Ila 9entatk hat7ayad had lmail
+       // Mail::to(Auth::user()->email )->send( new ResMail( $info ) );
 
-        Mail::to(Auth::user()->email )->send( new ResMail( $info ) );
 
-
-        $message = 'Conglation Payé avec succes';
+        $message = 'Félicitation...la réservation est effectuée avec succés';
         $state = 'success';
 
         return view('back.layouts.message', compact( 'message', 'state' ));

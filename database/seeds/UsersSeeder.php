@@ -20,10 +20,10 @@ class UsersSeeder extends Seeder
         DB::table('users')->insert([
         	'pseudo' => $enc_pseudo,
         	'password' => bcrypt('123456'),
-            'nom' => 'anna',
-            'prenom' => 'roxana',
+            'nom' => 'larhemouchi',
+            'prenom' => 'zouhair',
             'sex' => true,
-            'email' => 'anna_roxana@gmail.com',
+            'email' => 'admin1@roxy.com',
             'tel' => '06060606',
         ]
     );
@@ -34,10 +34,10 @@ class UsersSeeder extends Seeder
         [
             'pseudo' => $enc_pseudo,
             'password' => bcrypt('123456'),
-            'nom' => 'admin',
-            'prenom' => 'admin',
+            'nom' => 'De Henau',
+            'prenom' => 'A Marie',
             'sex' => true,
-            'email' => 'admin@admin.com',
+            'email' => 'admin2@roxy.com',
             'tel' => '060606506',
         ]
 
@@ -48,10 +48,10 @@ class UsersSeeder extends Seeder
         DB::table('users')->insert([
         	'pseudo' => $enc_pseudo,
         	'password' => bcrypt('123456'),
-            'nom' => 'mata',
-            'prenom' => 'lan',
+            'nom' => 'VO',
+            'prenom' => 'Didier',
             'sex' => false,
-            'email' => 'ma_ta_lan2@gmail.com',
+            'email' => 'zouhair@gmail.com',
             'tel' => '06060606',
         ]);
     }

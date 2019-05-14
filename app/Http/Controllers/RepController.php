@@ -90,7 +90,7 @@ class RepController extends Controller
 
 
 
-        return view('back.rep.create', compact('theatres', 'salles', 'dt', 'carbon'));
+        return view('back.rep.create', compact('theatres', 'salles', 'dt'));
     }
 
     /**

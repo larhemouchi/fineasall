@@ -151,9 +151,8 @@ Modifier les informations d'un théatre
 
                   {{ Form::hidden('checkout', json_encode( $check ), [ 'id' => 'checkout_input']) }}
                   
-                  <button type="submit" class="btn btn-success float-right"><i class="fa fa-credit-card"></i> Confirm
-                    Payment
-                  </button>
+                  <button type="submit" class="btn btn-success float-right"><i class="fa fa-credit-card"></i> Passer au paiment
+                                </button>
 
                   {!! Form::close() !!}
                   

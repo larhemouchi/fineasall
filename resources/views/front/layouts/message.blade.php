@@ -10,7 +10,10 @@ MESSAGE
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-xs-12">
+          <div class="nidden-xs col-md-2"></div>
+
+              <div class="col-md-8">
+          
 
 
             <div class="error-page">
@@ -28,7 +31,7 @@ MESSAGE
                 </p>
 
                 
-              </div>
+             
             </div>
 
 

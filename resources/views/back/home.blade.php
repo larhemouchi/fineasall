@@ -13,12 +13,12 @@ Modifier les informations d'un théatre
           <div class="col-xs-12">
             <div class="card col-xs-12">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Users</h5>
 
                 <p class="card-text">
 
                     @foreach($users as $user)
-                        <li><a href="{{route('users.mod-info', $user->id)}}">modify user {{ $user->email }}</a>  <a href="{{route('users.res', $user->id)}}">ces reservations</a></li>
+                        <li><a href="{{route('users.mod-info', $user->id)}}">modifier le user {{ $user->email }}</a>  <a href="{{route('users.res', $user->id)}}">ces reservations</a></li>
                     @endforeach
                 </p>
 
@@ -45,22 +45,7 @@ Modifier les informations d'un théatre
           </div>
 
 
-          <div class="card col-xs-12">
-              <div class="card-body">
-                <h5 class="card-title">Salles</h5>
-
-                <p class="card-text">
-
-                    @foreach($salles as $salle)
-                        <li><a href="{{route('salles.show', $salle->slug )}}"></a></li>
-                    @endforeach
-                </p>
-
-
-              </div>
-            </div>
-
-          </div>
+         
 
           <div class="card col-xs-12">
               <div class="card-body">
@@ -95,6 +80,22 @@ Modifier les informations d'un théatre
 
               </div>
             </div>
+                <div class="card col-xs-12">
+              <div class="card-body">
+                <h5 class="card-title">Salles</h5>
+
+                <p class="card-text">
+
+                    @foreach($salles as $salle)
+                        <li><a href="{{route('salles.show', $salle->slug )}}"></a></li>
+                    @endforeach
+                </p>
+
+
+              </div>
+            </div>
+
+          </div>
 
           </div>
 
