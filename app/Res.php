@@ -12,10 +12,10 @@ class Res extends Model
 
    public function titre(){
 
-
+      return '{NORMALIZED}';
 
       //$re->reheatre->titre
-      return $this->user->nom .' '.$this->user->prenom.' à reservé le siége n° '. $this->siege->num.' pour voir  le théatre : '. $this->rep->theatre->titre ;
+      //return $this->user->nom .' '.$this->user->prenom.' à reservé le siége n° '. $this->siege->num.' pour voir  le théatre : '. $this->rep->theatre->titre ;
    }
 
     public function siege()

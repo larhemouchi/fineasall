@@ -83,7 +83,7 @@ Modifier les informations d'un théatre
                 <p class="card-text">
                 <ul>
                     @foreach($reps as $rep)
-                        <li><a href="{{route('reps.show', $rep->slug )}}">{{ $rep->titre() }} </a></li>
+                        <li><a href="{{route('reps.show', $rep->slug )}}">{{ $rep->theatre->titre .' à la salle : '. $rep->theatre->nom }} </a></li>
                     @endforeach
                     </ul>
                 </p>
@@ -103,7 +103,7 @@ Modifier les informations d'un théatre
                 <p class="card-text">
                 <ul>
                     @foreach($res as $re )
-                        <li>{{ $re->titre() }}</li>
+                        <li>{{ $re->user->nom .' '.$re->user->prenom.' à reservé le siége n° '. $re->siege->num.' pour voir  le théatre : '. $re->rep->theatre->titre .'à la salle : '. $re->rep->salle->nom }}</li>
                     @endforeach
                     </ul>
                 </p>

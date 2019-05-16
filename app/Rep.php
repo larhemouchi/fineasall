@@ -13,7 +13,9 @@ class Rep extends Model
 
 
     public function titre(){
-       return $this->theatre->titre  ;
+
+      return '{NORMALIZED}'; 
+      //return $this->theatre->titre  ;
     }
 
 
