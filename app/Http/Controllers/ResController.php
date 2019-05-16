@@ -172,11 +172,11 @@ class ResController extends Controller
         //validating the card
 
         $this->validate($request, [
-            'total' => 'required',
-            'exp_month' => 'required',
+            'total' => 'required|numeric',
+            'exp_month' => 'required|numeric',
             'exp_year' => 'required|numeric',
-            'exp_month' => 'required',
-            'cvv' => 'required',
+            'exp_month' => 'required|numeric',
+            'cvv' => 'required|numeric',
             'holder' => 'required',
             'brand' => 'required',
         ]);

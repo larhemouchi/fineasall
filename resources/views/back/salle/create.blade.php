@@ -22,17 +22,29 @@ Modifier les informations d'un théatre
 
                   {{ csrf_field() }}
 
-				  <div class="form-group">
+				  <div class="form-group @if($errors->get('nom')) has-error @endif">
 				    <label for="nom">nom</label>
 
 				    {!! Form::text('nom', null, ['class' => 'form-control', 'id' => 'nom' ]) !!}
+@if($errors->get('nom'))
+            @foreach($errors->get('nom') as $message)
 
+             {{$message}}
+            @endforeach
+
+            @endif
 				  </div>
-				  <div class="form-group">
-				    <label for="adress">adress</label>
+				  <div class="form-group @if($errors->get('adress')) has-error @endif">
+				    <label for="adress">adresse</label>
 
 				    {!! Form::textarea('adress', null, ['class' => 'form-control', 'id' => 'adress' ]) !!}
+@if($errors->get('adress'))
+            @foreach($errors->get('adress') as $message)
 
+             {{$message}}
+            @endforeach
+
+            @endif
 				  </div>
 
 

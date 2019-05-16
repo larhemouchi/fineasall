@@ -16,14 +16,12 @@
 Route::get('/test', function(){
 
 
-    return count(App\Res::where('rep_id', 44)->get() );
-
+	return count(App\Res::where('rep_id', 44)->get() );
 
 });
 Route::get('/reservations/{user}', 'UserController@res')->name('users.res');
 Route::get('/mod-info/{user}', 'UserController@modInfo')->name('users.mod-info');
 Route::put('/mod-info/{user}', 'UserController@modInfoPut')->name('users.mod-info-put');
-
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
@@ -55,32 +53,9 @@ Route::get('/res-sieges/{rep}', 'ResController@init')->name('res.init');
 
 Route::get('/salle-sieges-info/{rep}', 'SalleController@siegesInfo')->name('salles.sieges-info');
 
-
 Route::resource('salles', 'SalleController');
 
-
 Route::resource('reps', 'RepController');
-/*
-if ($exception instanceof ModelNotFoundException) {
-    return $exception->getModel() == Server::class
-                ? Route::respondWithRoute('serverFallback') 
-                : Route::respondWithRoute('fallback');
-}
-Route::fallback(function() {
-    return 'Hm, why did you land here somehow?';
-});
-
-
-Route::fallback(function(){
-    $state = 'error';
-    $message = '404';
-    return view('back.layouts.message',compact('state', 'message') );
-});
-
-*/
-
-
-
 
 Auth::routes();
 

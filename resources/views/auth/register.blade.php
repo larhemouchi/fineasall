@@ -19,84 +19,119 @@
         <div class="lowin-wrapper">
 
             <div class="lowin-box lowin-register">
-            <div class="lowin-box-inner">
+                <div class="lowin-box-inner">
 
 
-                <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                    {{ csrf_field() }}
+                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                        {{ csrf_field() }}
 
-                    <p>Let's create your account</p>
-                    <div class="lowin-group">
-                        <label>Email</label>
-                        <input type="email" autocomplete="email" name="email" class="lowin-input">
-                    </div>
-                    <div class="lowin-group">
-                        <label>Password</label>
-                        <input type="password" name="password" autocomplete="current-password" class="lowin-input">
-                    </div>
+                        <p>Let's create your account</p>
+                        <div class="lowin-group @if($errors->get('email')) has-error @endif">
+                            <label>Email</label>
+                            <input type="email" autocomplete="email" name="email" class="lowin-input" value="{{old('email')}}">
+                            @if($errors->get('email'))
+                            @foreach($errors->get('email') as $message)
+
+                            {{$message}}
+                            @endforeach
+
+                            @endif
+                        </div>
+                        <div class="lowin-group">
+                            <label>Password</label>
+                            <input type="password" name="password" autocomplete="current-password" class="lowin-input">
+                        </div>
+
+                        <div class="lowin-group">
+                            <label for="password-confirm">Confirmer Password</label>
+
+                            <input id="password-confirm" type="password" class="lowin-input" name="password_confirmation" required>
+
+                        </div>
+                        <div class="lowin-group @if($errors->get('pseudo')) has-error @endif ">
+                            <label>pseudo</label>
+                            <input type="text" name="pseudo" autocomplete="pseudo" class="lowin-input" value="{{old('pseudo')}}">
+                            @if($errors->get('pseudo'))
+                            @foreach($errors->get('pseudo') as $message)
+
+                            {{$message}}
+                            @endforeach
+
+                            @endif
+                        </div>
+                        <div class="lowin-group if($errors->get('pseudo')) has-error @endif ">
+                            <label>Nom</label>
+                            <input type="text" name="nom" autocomplete="nom" class="lowin-input" value="{{old('nom')}}">
+
+                            @if($errors->get('nom'))
+                            @foreach($errors->get('nom') as $message)
+
+                            {{$message}}
+                            @endforeach
+
+                            @endif
+                        </div>
+                        <div class="lowin-group if($errors->get('prenom')) has-error @endif ">
+                            <label>Prenom</label>
+                            <input type="text" name="prenom" autocomplete="prenom" class="lowin-input">
+                            @if($errors->get('prenom'))
+                            @foreach($errors->get('prenom') as $message)
+
+                            {{$message}}
+                            @endforeach
+
+                            @endif
+                        </div>
+                        <div class="lowin-group">
+                            <label for="sex" class="col-md-4 control-label">Sex</label>
+                            {{ Form::select('sex', [True => 'Homme', False => 'Femme' ], old('sex'), [ 'required' => true, 'class' => 'form-control lowin-input']) }}
 
 
-                    <div class="lowin-group">
-                        <label for="password-confirm">Confirmer Password</label>
+                            @if ($errors->has('sex'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('sex') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                        <div class="lowin-group if($errors->get('tel')) has-error @endif ">
+                            <label>telephone</label>
+                            <input type="text" name="tel" autocomplete="tel" class="lowin-input">
+                            @if($errors->get('tel'))
+                            @foreach($errors->get('tel') as $message)
 
-                        <input id="password-confirm" type="password" class="lowin-input" name="password_confirmation" required>
-                        
+                            {{$message}}
+                            @endforeach
+
+                            @endif
+                        </div>
+
+                        <button class="lowin-btn">
+                            Sign Up
+                        </button>
+
+                        <div class="text-foot">
+                            Already have an account? <a href="{{ route('login') }}" class="login-link">Login</a>
+                        </div>
+                    </form>
                 </div>
-                <div class="lowin-group">
-                    <label>pseudo</label>
-                    <input type="text" name="pseudo" autocomplete="pseudo" class="lowin-input">
-                </div>
-                <div class="lowin-group">
-                    <label>Nom</label>
-                    <input type="text" name="nom" autocomplete="nom" class="lowin-input">
-                </div>
-                <div class="lowin-group">
-                    <label>Prenom</label>
-                    <input type="text" name="prenom" autocomplete="prenom" class="lowin-input">
-                </div>
-                <div class="lowin-group">
-                    <label for="sex" class="col-md-4 control-label">Sex</label>
-                    {{ Form::select('sex', [True => 'Homme', False => 'Femme' ], old('sex'), [ 'required' => true, 'class' => 'form-control lowin-input']) }}
+            </div>
 
 
-                    @if ($errors->has('sex'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('sex') }}</strong>
-                    </span>
-                    @endif
-                </div>
-                <div class="lowin-group">
-                    <label>telephone</label>
-                    <input type="text" name="tel" autocomplete="tel" class="lowin-input">
-                </div>
 
-                <button class="lowin-btn">
-                    Sign Up
-                </button>
-
-                <div class="text-foot">
-                    Already have an account? <a href="{{ route('login') }}" class="login-link">Login</a>
-                </div>
-            </form>
         </div>
+
+        <footer class="lowin-footer">
+
+        </footer>
     </div>
-           
-
-        
-</div>
-
-<footer class="lowin-footer">
-    
-</footer>
-</div>
-<link href="{{ asset('css/auth.css') }}" rel="stylesheet">
-<script src="{{ asset('js/auth.js') }}"></script>
-<script>
-Auth.init({
-    login_url: '#register',
-    forgot_url: '#forgot'
-});
-</script>
+    <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/auth.js') }}"></script>
+    <script>
+    Auth.init({
+        login_url: '#register',
+        forgot_url: '#forgot'
+    });
+    </script>
 </body>
 </html>
 

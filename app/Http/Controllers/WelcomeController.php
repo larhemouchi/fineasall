@@ -10,9 +10,9 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $theatres = Theatre::latest()->take(9)->get();
-        $salles = Salle::latest()->take(9)->get();
-        $reps = Rep::latest()->take(9)->get();
+        $theatres = Theatre::latest()->take(12)->get();
+        $salles = Salle::latest()->take(12)->get();
+        $reps = Rep::latest()->take(12)->get();
 
 
 

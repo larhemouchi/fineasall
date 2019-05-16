@@ -32,7 +32,7 @@
                         </span>
                         @endif
                     </div>
-                    <div class="lowin-group password-group">
+                    <div class="lowin-group form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <label>Password <a href="#" class="forgot-link">Forgot Password?</a></label>
                         <input type="password" name="password" id="password" autocomplete="current-password" class="lowin-input" required >
                         @if ($errors->has('password'))
@@ -46,12 +46,12 @@
                     </button>
 
                     <div class="text-foot">
-                        Don't have an account? <a href="" class="register-link">Register</a>
+                        Don't have an account? <a href="{{ route('register') }}" class="register-link">Register</a>
                     </div>
                 </form>
             </div>
         </div>
-
+<!--
         <div class="lowin-box lowin-register">
             <div class="lowin-box-inner">
 
@@ -127,7 +127,7 @@ Auth.init({
     login_url: '#login',
     forgot_url: '#forgot'
 });
-</script>
+</script>-->
 </body>
 </html>
 

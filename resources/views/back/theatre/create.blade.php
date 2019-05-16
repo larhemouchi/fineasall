@@ -18,21 +18,34 @@ Modifier les informations d'un théatre
                 <p class="card-text">
 
 
+
                   {!! Form::open(['route' => ['theatres.store' ], 'method' => 'POST',  'files' => true ]) !!}
 
                   {{ csrf_field() }}
 
-				  <div class="form-group">
+				  <div class="form-group @if($errors->get('titre')) has-error @endif">
 				    <label for="titre">Titre</label>
 
 				    {!! Form::text('titre', null, ['class' => 'form-control', 'id' => 'titre' ]) !!}
+@if($errors->get('titre'))
+            @foreach($errors->get('titre') as $message)
 
+             {{$message}}
+            @endforeach
+
+            @endif
 				  </div>
-				  <div class="form-group">
+				  <div class="form-group @if($errors->get('desc')) has-error @endif">
 				    <label for="desc">Description</label>
 
 				    {!! Form::textarea('desc', null, ['class' => 'form-control', 'id' => 'desc' ]) !!}
+@if($errors->get('desc'))
+            @foreach($errors->get('desc') as $message)
 
+             {{$message}}
+            @endforeach
+            
+            @endif
 				  </div>
 
           <div class="form-group">

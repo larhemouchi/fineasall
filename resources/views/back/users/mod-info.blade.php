@@ -43,6 +43,10 @@ Modifier les informations dun utilisateur
 
                   {{ csrf_field() }}
 
+
+
+
+
 				  <div class="form-group">
                         <label for="pseudo">pseudo</label>
 

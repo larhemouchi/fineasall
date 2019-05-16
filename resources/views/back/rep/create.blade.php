@@ -18,39 +18,69 @@ Modifier les informations d'un représentation
                 <p class="card-text">
 
 
+
+
+
                   {!! Form::open(['route' => ['reps.store' ], 'method' => 'POST' ]) !!}
                   {{ csrf_field() }}
 
-                  <div class="form-group">
+                  <div class="form-group @if($errors->get('prix')) has-error @endif   ">
                   <label for="prix">Prix</label>
 
                   {{ Form::number( 'prix', null, old('prix'), ['required' => true, 'class' => 'form-control']) }}
+@if($errors->get('prix'))
+            @foreach($errors->get('prix') as $message)
 
+             {{$message}}
+            @endforeach
+
+            @endif
                 </div>
 
 
 
-				  <div class="form-group">
+				  <div class="form-group @if($errors->get('theatre')) has-error @endif  ">
 				    <label for="theatre">Theatre</label>
 
 				    {{ Form::select('theatre_id', $theatres, old('theatre'), ['required' => true, 'class' => 'form-control']) }}
 
+@if($errors->get('theatre'))
+            @foreach($errors->get('theatre') as $message)
+
+             {{$message}}
+            @endforeach
+
+            @endif
 				  </div>
 
 
-				  <div class="form-group">
+			  <div class="form-group @if($errors->get('salle')) has-error @endif ">
             <label for="salle">Salle</label>
 
             {{ Form::select('salle_id', $salles, old('salle'), ['required' => true, 'class' => 'form-control']) }}
 
+
+@if($errors->get('salle'))
+            @foreach($errors->get('salle') as $message)
+
+             {{$message}}
+            @endforeach
+
+            @endif
           </div>
 
 
-          <div class="form-group">
-            <label for="salle">Date heures</label>
+          <div class="form-group @if($errors->get('dateheure')) has-error @endif ">
+            <label for="dateheure">Date heures</label>
 
             {{ Form::input('dateTime-local', 'dateheure', $dt, array('class' => 'form-control')) }}
+@if($errors->get('dateheure'))
+            @foreach($errors->get('dateheure') as $message)
 
+             {{$message}}
+            @endforeach
+
+            @endif
           </div>
 
 

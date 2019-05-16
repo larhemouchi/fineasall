@@ -1,7 +1,7 @@
 @extends('front.layouts.index')
 
 @section('title')
-Modifier les informations d'un théatre
+Modifier les informations d'une salle
 @endsection
 
 @section('content')
@@ -22,7 +22,9 @@ Modifier les informations d'un théatre
             <div class="card">
 
               <div class="card-body">
-              <div class="card-title"> <h5>  {{ $salle->nom }}</h5>
+              <div class="card-title">
+               <h5>  {{ $salle->nom }}</h5>
+
 
      <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre('random') ) }}" 
      <class="card-title"> 

@@ -85,14 +85,23 @@
       </ul>
 
 
+       
+
+
 <ul class="nav navbar-nav ml-auto">
 {!! Form::open(['route' => 'models.search', 'method' => 'post', 'class' => 'form-inline mt-2 mt-md-0']) !!}
 {{ csrf_field() }}
-<div class="input-group mb-2 mr-sm-2">
+<div class="input-group mb-2 mr-sm-2 @if($errors->get('search')) has-error @endif">
 <div class="input-group-prepend">
 <input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
 
-    
+    @if($errors->get('search'))
+            @foreach($errors->get('search') as $message)
+
+             {{$message}}
+            @endforeach
+
+            @endif
     </div>
     {{ Form::select('model', ['reps'=>'representations','theatres' => 'theatre', 'salles' => 'salle' ], 'theatres', ['class'=>'form-control']) }}
 
