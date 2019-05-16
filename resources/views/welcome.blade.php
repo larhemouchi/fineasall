@@ -93,7 +93,7 @@
 
           <div class="card mb-4 shadow-sm">
             @if($rep->theatre->img != '')
-          <img class="img-fluid" src="{{ asset( Img::noimg('theatre', $theatre->img ) ) }}" />
+          <img class="img-fluid" src="{{ asset( Img::noimg('theatre', $rep->theatre->img ) ) }}" />
         @else
 
         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="{{ Decore::colors('random') }}"></rect><text x="50%" y="50%" fill="{{ Decore::colors('random') }}" dy=".3em">{{ $rep->theatre->titre }}</text></svg>
