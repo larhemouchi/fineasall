@@ -18,7 +18,7 @@ Modifier les informations d'un théatre
                 <p class="card-text">
 
 
-                  {!! Form::open(['route' => ['salles.store' ], 'method' => 'POST' ]) !!}
+                  {!! Form::open(['route' => ['salles.store' ], 'method' => 'POST',  'files' => true  ]) !!}
 
                   {{ csrf_field() }}
 
@@ -47,7 +47,12 @@ Modifier les informations d'un théatre
             @endif
 				  </div>
 
+          <div class="form-group">
+            <label for="img">IMG</label>
 
+            {!! Form::file('img', ['class' => 'form-control', 'id' => 'img' ]) !!}
+
+          </div>
 
 				  <button type="submit" class="btn btn-primary">Submit</button>
 

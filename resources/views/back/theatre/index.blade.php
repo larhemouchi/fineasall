@@ -7,7 +7,7 @@ Modifier les informations d'un théatre
 @section('content')
 
   <hr class="featurette-divider">
-<h3 class="text-center col-xs-12"> Toutes les pieces de théatre</h3>
+<h3 class="text-center col-xs-12"> Toutes les pieces de théatre <a href="{{ route('theatres.create') }}" class="btn btn-primary float-right" >Ajouter</a></h3>
   <hr class="featurette-divider">
       <div class="container">
 

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Money;
 use Math;
 use Auth;
-
+use Img;
 class SalleController extends Controller
 {
     /**
@@ -49,8 +49,12 @@ class SalleController extends Controller
      */
     public function store(Request $request)
     {
+
+        $img = Img::store( $request, 'salle' , 'nom');
+
         $salle = Salle::create([
             'nom' => $request->nom,
+            'img' => $img,
             'adress' => $request->adress,
             'slug' => str_slug($request->nom, '-')
         ]);
@@ -106,6 +110,17 @@ class SalleController extends Controller
      */
     public function update(Request $request, Salle $salle)
     {
+        if( $request->hasFile('img') ){
+            Img::delete($salle,'salle', 'nom');
+        }
+
+
+        $img = Img::store( $request, 'salle' , 'nom');
+
+
+        $salle->img = $img;
+
+
         $salle->nom = $request->nom;
         $salle->adress = $request->adress;
         $salle->slug = str_slug($request->nom, '-');
@@ -123,6 +138,10 @@ class SalleController extends Controller
      */
     public function destroy(Salle $salle)
     {
+
+        Img::delete($salle,'salle', 'nom');
+
+
         $reps = Rep::where('salle_id', $salle->id)->get();
 
         foreach($reps as $rep){

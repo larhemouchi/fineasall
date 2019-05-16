@@ -19,6 +19,7 @@ class CreateSallesTable extends Migration
             $table->string('slug')->unique();
             $table->text('adress');
             $table->boolean('sieges_complet')->default(False);
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

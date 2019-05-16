@@ -4,19 +4,19 @@
 @section('content')
 
 
-  </br>
+  <br>
     <div class="content">
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            </br>
+            <br>
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><strong>Nom de la salle : </strong> {{ $salle->nom }}</h5>
 
                 
 
-                <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre($salle->id) ) }}" />
+                <img class="img-fluid" src="{{ asset( Img::noimg('salle', $salle->img ) ) }}" />
 
                 <hr />
 

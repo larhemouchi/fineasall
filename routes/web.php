@@ -31,6 +31,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/regular', 'HomeController@regular')->name('users.regular');
 
+Route::get('/upgrade/{user}', 'UserController@upgrade')->name('users.upgrade');
+Route::get('/downgrade/{user}', 'UserController@downgrade')->name('users.downgrade');
+
 Route::get('/super-admin', 'HomeController@superAdmin')->name('users.super-admin');
 
 Auth::routes();

@@ -17,7 +17,7 @@
 
       @forelse($reps as $rep)
 
-      <li data-target="#myCarousel" data-slide-to="{{ $loop->index + 1 }}" class="{{$loop->first?'active': ''}}">
+      <li data-target="#myCarousel" data-slide-to="{{ $loop->index + 1 }}" class="">
       </li>
 
 
@@ -33,7 +33,7 @@
         <div class="carousel-item active">
 
 
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#60a3bc"/></svg>
+          <img src="{{ asset('uploads/other/carousel.jpg') }}">
           <div class="container">
             <div class="carousel-caption text-center">
               <h1>WELCOM TO ROXY THEATRE.</h1>
@@ -93,7 +93,7 @@
 
           <div class="card mb-4 shadow-sm">
             @if($rep->theatre->img != '')
-          <img class="img-fluid" src="{{ asset('uploads/theatre/'. $rep->theatre->img) }}" />
+          <img class="img-fluid" src="{{ asset( Img::noimg('theatre', $theatre->img ) ) }}" />
         @else
 
         <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="{{ Decore::colors('random') }}"></rect><text x="50%" y="50%" fill="{{ Decore::colors('random') }}" dy=".3em">{{ $rep->theatre->titre }}</text></svg>
@@ -154,13 +154,9 @@
 	@forelse( $theatres as $theatre )
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-          	@if($theatre->img != '')
-            	<img class="img-fluid" src="{{ asset('uploads/theatre/'. $theatre->img) }}" />
-            @else
 
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="{{ Decore::colors('random') }}"></rect><text x="50%" y="50%" fill="{{ Decore::colors('random') }}" dy=".3em">{{ $theatre->titre }}</text></svg>
+            	<img class="img-fluid" src="{{ asset( Img::noimg('theatre', $theatre->img ) ) }}" />
 
-            @endif
             <div class="card-body">
             	@if($theatre->img != '')
             	<p class="card-text"><strong>{{ $theatre->titre }} </strong></p>
@@ -215,7 +211,7 @@
 
           <div class="card mb-4 shadow-sm">
 
-          	<img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre( $salle->id ) ) }}" />
+          	<img class="img-fluid" src="{{ asset( Img::noimg('salle', $salle->img ) ) }}" />
 
          
 

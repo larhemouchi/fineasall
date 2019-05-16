@@ -9,11 +9,10 @@ Toutes les representations
   <div class="container">
     <div class="row">
         <div class="col-lg-12 my-3">
-            <div class="pull-right">
-              
-            </div>
+                <h1>representations <a href="{{ route('reps.create') }}" class="btn btn-primary float-right" >Ajouter</a></h1>
         </div>
     </div> 
+    <hr />
 
     <div id="products" class="row view-group">
                @forelse( $reps as $rep )
@@ -61,6 +60,8 @@ Toutes les representations
                     </div>
                 </div>
                  @empty
+
+                 <div class="alert alert-warning">Vide</div>
                   @endforelse
                         </div>
                     </div>

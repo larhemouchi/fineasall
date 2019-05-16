@@ -8,9 +8,57 @@ use Illuminate\Support\Facades\Crypt;
 use Auth;
 
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 class UserController extends Controller
 {
+
+
+    public function upgrade(User $user){
+
+        if( $user->hasRole('regular')  ){
+
+            $user->removeRole('regular');
+            $user->assignRole('super_admin');
+
+            $message = 'Bien mise a niveau';
+            $state = 'success';
+    
+            return view('back.layouts.message', compact( 'message', 'state' ));
+
+
+
+        }
+
+
+        return back();
+
+
+    }
+
+    public function downgrade(User $user){
+
+        if( $user->hasRole('super_admin')  ){
+
+            $user->removeRole('super_admin');
+            $user->assignRole('regular');
+
+            $message = 'Dégradation activé';
+            $state = 'success';
+    
+            return view('back.layouts.message', compact( 'message', 'state' ));
+
+
+
+        }
+
+
+        return back();
+
+
+    }
 
 
     public function res(User $user){
