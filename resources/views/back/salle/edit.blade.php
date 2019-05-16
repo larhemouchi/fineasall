@@ -18,7 +18,7 @@ Modifier les informations d'un théatre
                 <p class="card-text">
 
 
-                  {!! Form::model($salle, ['route' => ['salles.update', $salle->id ], 'method' => 'PUT' ]) !!}
+                  {!! Form::model($salle, ['route' => ['salles.update', $salle->id ], 'method' => 'PUT',  'files' => true  ]) !!}
 
                   {{ csrf_field() }}
 
@@ -35,7 +35,19 @@ Modifier les informations d'un théatre
 
           </div>
 
+          <div class="form-group">
 
+            @if($salle->img != '')
+
+            <img class="img-fluid" src="{{ asset('uploads/salle/'. $salle->img) }}" />
+
+            @endif
+            <hr />
+            <label for="img">IMG</label>
+
+            {!! Form::file('img', ['class' => 'form-control', 'id' => 'img' ]) !!}
+
+          </div>
 
 				  <button type="submit" class="btn btn-primary">Submit</button>
 

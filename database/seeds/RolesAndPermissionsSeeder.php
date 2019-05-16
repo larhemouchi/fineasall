@@ -48,9 +48,8 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $role_sadmin->givePermissionTo(['add_theater','modify_theater', 'delete_theater' ]);
 
-        $superAdmin = User::find(1);
 
-        User::where('id' , [1, 2])->each(function ($item, $key) {
+        User::whereIn('id' , [1, 2])->each(function ($item, $key) {
 
             $item->assignRole('super_admin');
         });

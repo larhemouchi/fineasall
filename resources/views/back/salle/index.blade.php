@@ -7,7 +7,7 @@ Modifier les informations d'un théatre
 @section('content')
 
   <hr class="featurette-divider">
-<h3 class="text-center col-xs-12"> Toutes les salles</h3>
+<h3 class="text-center col-xs-12"> Toutes les salles <a href="{{ route('salles.create') }}" class="btn btn-primary float-right" >Ajouter</a></h3>
   <hr class="featurette-divider">
       <div class="container">
 
@@ -24,8 +24,8 @@ Modifier les informations d'un théatre
               <div class="card-body">
               <div class="card-title"> <h5>  {{ $salle->nom }}</h5>
 
-     <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre('random') ) }}" 
-     <class="card-title"> 
+     <img class="img-fluid" src="{{ asset('uploads/salle/'. Decore::salle_theatre('random') ) }}" />
+     <div class="card-title"> 
                 <p class="card-text">
 
 

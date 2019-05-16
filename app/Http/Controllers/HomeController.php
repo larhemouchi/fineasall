@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use Auth;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 class HomeController extends Controller
 {
     /**
@@ -25,15 +28,26 @@ class HomeController extends Controller
      */
     public function superAdmin(){
 
-        $users = User::whereNotIn('id', [1,2])->get();
 
+        $users = User::role('regular')->get();
+
+
+
+        $admins = User::role('super_admin')->get();
+        $admins = $admins->filter(function($item, $key){
+
+            //dd($item->id, Auth::id(), $item->id != Auth::id());
+
+            return $item->id != Auth::id();
+
+        });
         $theatres = Theatre::all();
         $salles = Salle::all();
         $reps = Rep::all();
         $res = Res::all();
 
 
-        return view('back/home', compact('users', 'theatres', 'salles', 'reps', 'res'));
+        return view('back/home', compact('users', 'admins', 'theatres', 'salles', 'reps', 'res'));
     }
     public function regular(){
 
