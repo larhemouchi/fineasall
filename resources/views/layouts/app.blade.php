@@ -29,6 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{url('/')}}">
+                        
                         {{ config('app.name', 'The Roxy Theatre') }}
                     </a>
                 </div>

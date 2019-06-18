@@ -6,6 +6,7 @@ use App\{ Res, Rep, Siege, Cat};
 use Illuminate\Http\Request;
 use Auth;
 use Mail;
+use PDF;
 
 use App\Mail\ReservedMail;
 use App\Mail\ResMail;
@@ -108,9 +109,20 @@ class ResController extends Controller
 
     public function checkout(Rep $rep, Request $request){
 
+
+
+        if($request->checkout == "{}"){
+
+            return back();
+
+        }else{
+            $checkout =  json_decode( $request->checkout )  ;
+
+
+        }
         
 
-        $checkout =  json_decode( $request->checkout )  ; 
+         
         $total = 0;
         
 /*
@@ -126,6 +138,7 @@ class ResController extends Controller
 
 
         */
+
 
         return view('back.res.sieges.checkout', compact('rep','checkout', 'total'));
 
@@ -170,9 +183,9 @@ class ResController extends Controller
 
 
         //validating the card
-
         $this->validate($request, [
             'total' => 'required|numeric',
+            'number' => 'required',
             'exp_month' => 'required|numeric',
             'exp_year' => 'required|numeric',
             'exp_month' => 'required|numeric',
@@ -180,6 +193,8 @@ class ResController extends Controller
             'holder' => 'required',
             'brand' => 'required',
         ]);
+
+
 
         //validating the card
         $checkout =  json_decode( $request->checkout )  ;
@@ -206,7 +221,7 @@ class ResController extends Controller
             $message = 'Dont try to hack';
             $state = 'error';
 
-            return view('back.layouts.message', compact( 'message', 'state' ));
+            return view('back.layouts.message', compact( 'message', 'error' ));
 
         }
 
@@ -231,7 +246,7 @@ class ResController extends Controller
                 $message = 'Application error [ CAT ]';
                 $state = 'error';
 
-                return view('back.layouts.message', compact( 'message', 'state' ));
+                return view('back.layouts.message', compact( 'message', 'error' ));
 
             }
 
@@ -254,7 +269,7 @@ class ResController extends Controller
                 $message = 'Application error [ SIEGE ]';
                 $state = 'error';
 
-                return view('back.layouts.message', compact( 'message', 'state' ));
+                return view('back.layouts.message', compact( 'message', 'error' ));
 
             }else{
 
@@ -282,14 +297,54 @@ class ResController extends Controller
         // throw a message if payed
 
         //Ila 9entatk hat7ayad had lmail
-       // Mail::to(Auth::user()->email )->send( new ResMail( $info ) );
+       Mail::to(Auth::user()->email )->send( new ResMail( $info ) );
 
 
-        $message = 'Félicitation...la réservation est effectuée avec succés';
-        $state = 'success';
+        $request->session()->put('infoArray', $info);
 
-        return view('back.layouts.message', compact( 'message', 'state' ));
+
+        return redirect()->route('res.pdf', compact($info));
 /**/
+    }
+
+    public function pdf(Request $request){
+
+        $info = $request->session()->get('infoArray', []);
+
+        //$request->session()->forget('infoArray');
+
+
+        if( count($info) > 0 ){
+
+/*
+            $data = [
+                'foo' => 'bar'
+            ];
+            $mpdf = new \Mpdf\Mpdf();
+            $mpdf->WriteHTML('Hello World');
+            return $mpdf->Output();
+
+*/
+
+            $pdf = PDF::loadView('back.res.pdf.pdf', compact('info'), ['orientation' => 'L']);
+
+            //$pdf->download();
+            return $pdf->stream('Tickets.pdf');
+
+        }else{
+
+            return view('back.layouts.message', compact( 'Success , regarde ta boite mail !', 'success' ));
+
+        }
+
+
+
+        
+
+
+
+
+
     }
 
 

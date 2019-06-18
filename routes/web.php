@@ -50,9 +50,15 @@ Route::post('/res-cr/{rep}', 'ResController@cr')->name('res.cr');
 
 Route::post('/res-confirm/{rep}', 'ResController@confirm')->name('res.confirm');
 
+Route::post('/display-h-2-check/{rep}', 'HandicapController@display')->name('handicap.display');
+
+Route::post('/check-handicaped', 'HandicapController@check')->name('handicap.check');
+
 Route::post('/res-checkout/{rep}', 'ResController@checkout')->name('res.checkout');
 
 Route::get('/res-sieges/{rep}', 'ResController@init')->name('res.init');
+
+Route::get('/res-pdf', 'ResController@pdf')->name('res.pdf');
 
 Route::get('/salle-sieges-info/{rep}', 'SalleController@siegesInfo')->name('salles.sieges-info');
 

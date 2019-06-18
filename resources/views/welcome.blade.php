@@ -36,9 +36,11 @@
           <img src="{{ asset('uploads/other/carousel.jpg') }}">
           <div class="container">
             <div class="carousel-caption text-center">
-              <h1>WELCOM TO ROXY THEATRE.</h1>
-              <p>La meilleur platforme des theatres.</p>
-              <p><a class="btn btn-lg btn-primary" href="{{ Auth::check() ? route('welcome') : route('register') }}" role="button">{{ Auth::check() ? 'Bienvenue' : "S'enregistrer" }}</a></p>
+              
+              <h1 class='display-1'>ROXY</h1>
+              <img src="{{ asset('images/app/logo.png') }}" />
+              <p>Vis tes rêves.</p>
+              <h2 class=""><a class="btn btn-lg btn-default" href="{{ Auth::check() ? route('welcome') : route('register') }}" role="button">{{ Auth::check() ? 'Bienvenue' : "S'enregistrer ?" }}</a></h2>
             </div>
           </div>
         </div>

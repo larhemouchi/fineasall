@@ -21,7 +21,9 @@ les informations de la carte de paiement
                 <p class="card-text">
 
 
-                    {!! Form::open(['route' => ['res.cr', $rep->id ], 'method' => 'post' ]) !!}
+                    {!! Form::open([ 'method' => 'post', 'route' => ['res.cr' , $rep->id ]  ]) !!}
+
+
 
                     {{ csrf_field() }}
 
@@ -62,7 +64,7 @@ les informations de la carte de paiement
           <div class="form-group">
             <label for="cvv">CVV</label>
 
-            {!! Form::text('cvv', null, ['class' => 'form-control', 'id' => 'cvv' ]) !!}
+            {!! Form::number('cvv', null, ['class' => 'form-control', 'id' => 'cvv' ]) !!}
 
           </div>
 

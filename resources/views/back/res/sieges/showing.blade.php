@@ -185,7 +185,7 @@ span.seatCharts-legendDescription {
 
 
 
-      {!! Form::open(['method' => 'POST', 'route' => ['res.checkout', $rep->id ]]) !!}
+      {!! Form::open(['method' => 'POST', 'route' => ['handicap.display', $rep->id ]]) !!}
       {{ csrf_field() }}
       {{ Form::hidden('checkout', '{}', [ 'id' => 'checkout_input']) }}
 

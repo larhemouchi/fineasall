@@ -20,7 +20,7 @@ Modifier les informations d'un théatre
             {!! Form::model($rep, ['route' => ['reps.update', $rep->id ], 'method' => 'PUT' ]) !!}
             {{ csrf_field() }}
 
-            <div class="form-group @if($errors->get('prix')) has-error @endif">
+            <div class="form-group {{$errors->get('prix')? 'has-error' : ''}}">
                   <label for="prix">Prix</label>
 
                   {{ Form::number( 'prix', null, old('prix'), ['required' => true, 'class' => 'form-control']) }}
@@ -33,7 +33,7 @@ Modifier les informations d'un théatre
             @endif
                 </div>
 
-                  <div class="form-group @if($errors->get('theatre')) has-error @endif ">
+                  <div class="form-group {{$errors->get('theatre')? 'has-error' : ''}}">
             <label for="theatre">Theatre</label>
 
             {{ Form::select('theatre_id', $theatres, old('theatre'), ['required' => true, 'class' => 'form-control']) }}
@@ -46,7 +46,7 @@ Modifier les informations d'un théatre
             @endif
           </div>
 
-          <div class="form-group @if($errors->get('salle')) has-error @endif ">
+          <div class="form-group {{$errors->get('salle')? 'has-error' : ''}}">
             <label for="salle">Salle</label>
 
             {{ Form::select('salle_id', $salles, old('salle'), ['required' => true, 'class' => 'form-control']) }}
@@ -60,7 +60,7 @@ Modifier les informations d'un théatre
             @endif
           </div>
 
-
+{{-- 
           <div class="form-group @if($errors->get('dateheure')) has-error @endif  ">
             <label for="dateheure">Date heures</label>
 
@@ -73,7 +73,7 @@ Modifier les informations d'un théatre
 
             @endif
           </div>
-
+--}}
 
 
 				  <button type="submit" class="btn btn-primary">Submit</button>

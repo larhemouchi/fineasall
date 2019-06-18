@@ -18,28 +18,25 @@ Modifier les informations d'un représentation
                 <p class="card-text">
 
 
-
-
-
                   {!! Form::open(['route' => ['reps.store' ], 'method' => 'POST' ]) !!}
                   {{ csrf_field() }}
 
-                  <div class="form-group @if($errors->get('prix')) has-error @endif   ">
+                  <div class="form-group {{$errors->get('prix')? 'has-error' : ''}}   ">
                   <label for="prix">Prix</label>
 
-                  {{ Form::number( 'prix', null, old('prix'), ['required' => true, 'class' => 'form-control']) }}
-@if($errors->get('prix'))
-            @foreach($errors->get('prix') as $message)
+                  {{ Form::number( 'prix', old('prix'), ['required' => true, 'class' => 'form-control']) }}
+                  @if($errors->get('prix'))
+                    @foreach($errors->get('prix') as $message)
 
-             {{$message}}
-            @endforeach
+                     {{$message}}
+                    @endforeach
 
-            @endif
+                  @endif
                 </div>
 
 
 
-				  <div class="form-group @if($errors->get('theatre')) has-error @endif  ">
+				  <div class="form-group {{$errors->get('theatre')? 'has-error' : ''}}  ">
 				    <label for="theatre">Theatre</label>
 
 				    {{ Form::select('theatre_id', $theatres, old('theatre'), ['required' => true, 'class' => 'form-control']) }}
@@ -54,7 +51,7 @@ Modifier les informations d'un représentation
 				  </div>
 
 
-			  <div class="form-group @if($errors->get('salle')) has-error @endif ">
+			  <div class="form-group {{$errors->get('salle')? 'has-error' : ''}} ">
             <label for="salle">Salle</label>
 
             {{ Form::select('salle_id', $salles, old('salle'), ['required' => true, 'class' => 'form-control']) }}
@@ -70,17 +67,21 @@ Modifier les informations d'un représentation
           </div>
 
 
-          <div class="form-group @if($errors->get('dateheure')) has-error @endif ">
-            <label for="dateheure">Date heures</label>
+          <div class="form-group">
+            <label for="date">Date</label>
 
-            {{ Form::input('dateTime-local', 'dateheure', $dt, array('class' => 'form-control')) }}
-@if($errors->get('dateheure'))
-            @foreach($errors->get('dateheure') as $message)
 
-             {{$message}}
-            @endforeach
+            {{ Form::input('date', 'date', $dt, array('class' => 'form-control')) }}
 
-            @endif
+          </div>
+
+
+          <div class="form-group">
+            <label for="heures">Heures</label>
+
+                {{ Form::select('heures[]', Configuration::hours() , null , ['required' => true, 'class' => 'form-control' , 'id' => 'heures', 'multiple' => true ]) }}
+
+
           </div>
 
 

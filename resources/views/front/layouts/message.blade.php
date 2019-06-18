@@ -31,6 +31,22 @@ MESSAGE
                 </p>
 
                 
+
+
+                @if(!empty($buttons))
+
+
+
+                  @foreach( $buttons  as $button)
+
+                    <a class="btn btn-lg btn-success" href="{{ route( $button[ 'link' ] ) }}">$button[ 'txt' ]</a>
+
+                  @endforeach
+
+
+                @endif
+
+                
              
             </div>
 

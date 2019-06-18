@@ -15,6 +15,27 @@ function cacul_pourcentage($nombre,$total,$pourcentage)
 }
 */
 
+class Configuration{
+
+	public static function hours($value = null){
+
+		$arr = [
+
+				'15:10',
+				'18:45',
+				'21:00'
+
+			];
+
+		if( isset( $value ) ){
+			return $arr[$value];
+		}else{
+			return $arr;
+		}
+	}
+
+}
+
 class Voiding{
 	public static function optional($value = null, callable $callback = null)
     {

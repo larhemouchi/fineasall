@@ -140,6 +140,8 @@ Modifier les informations d'un théatre
               </div>
               <!-- /.row -->
 
+
+
               <!-- this row will not appear when printing -->
               <div class="row no-print">
                 <div class="col-12">
@@ -149,10 +151,14 @@ Modifier les informations d'un théatre
                   {{ csrf_field() }}
 
 
-                  {{ Form::hidden('checkout', json_encode( $check ), [ 'id' => 'checkout_input']) }}
-                  
-                  <button type="submit" class="btn btn-success float-right"><i class="fa fa-credit-card"></i> Passer au paiment
-                                </button>
+                  {{ Form::hidden('checkout', json_encode( $checkout ), [ 'id' => 'checkout_input']) }}
+
+
+
+
+
+                  <button type="submit" id="pass" class="btn btn-success float-right"><i class="fa fa-credit-card"></i> Passer au paiment </button>
+
 
                   {!! Form::close() !!}
                   
@@ -165,5 +171,13 @@ Modifier les informations d'un théatre
       </div><!-- /.container-fluid -->
     <div>
 </div></section>
+
+@endsection
+
+@section('scripts')
+
+<script src="{{ asset('axios/axios.js') }}" type="text/javascript"></script>
+<script src="{!! asset('validate/validate.min.js') !!}"></script>
+
 
 @endsection

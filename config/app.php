@@ -210,6 +210,8 @@ return [
 
         App\Providers\UsabilityServiceProvider::class,
 
+        niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
+
 
 
         /*
@@ -277,7 +279,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'Carbon' => 'Carbon\Carbon',
+        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
         //our FACADE
 
         'Decore' => App\Helpers\Usability\Decore::class,
@@ -285,7 +288,7 @@ return [
         'Money' => App\Helpers\Usability\Money::class,
         'Img' => App\Helpers\Usability\Img::class,
         'Voiding' => App\Helpers\Usability\Voiding::class,
-        'Carbon' => 'Carbon\Carbon',
+        'Configuration' => App\Helpers\Usability\Configuration::class,
 
     ],
 

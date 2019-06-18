@@ -11,6 +11,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
+        "niklasravnsborg/laravel-pdf": "^3.1",
         "spatie/laravel-permission": "^2.37"
     },
     "require-dev": {

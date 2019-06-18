@@ -6,6 +6,8 @@ use App\{Rep, Res, Theatre, Salle};
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
+use Configuration;
+
 class RepController extends Controller
 {
 
@@ -85,7 +87,8 @@ class RepController extends Controller
 
         $dt = Carbon::now();
 
-        $dt = $dt->format('Y-m-d\TH:i:s');
+        //$dt = $dt->format('Y-m-d\TH:i:s');
+        $dt = $dt->format('Y-m-d');
 
 
 
@@ -101,19 +104,75 @@ class RepController extends Controller
      */
     public function store(Request $request)
     {
-        $rep = $request->toArray();
 
-        $rep = array_except($rep, ['_token','_method']);
 
-        $rep = Rep::create($rep);
+        $hours = $request->heures;
 
-        if($rep){
+        $collect_reps = [];
+        $collect_reps_id = [];
 
-            return redirect()->route('reps.show', $rep->id);
 
+
+        if( isset($hours ) ){
+
+
+            foreach( $hours as $hour ){
+
+
+
+
+                $date_houre = Carbon::parse($request->date . ' '. Configuration::hours( $hour ) ) ;
+
+                
+
+                $rep = Rep::create([
+
+                    'prix' => $request->prix,
+                    'theatre_id' => $request->theatre_id,
+                    'salle_id' => $request->salle_id,
+                    'dateheure' => $date_houre
+
+                ]);
+
+                if(!$rep){
+
+                    $message = 'Date Erreur';
+                    $state = 'error';
+
+                    return view('back.layouts.message', compact( 'message', 'state' ));
+                    
+                    break;
+                }else{
+
+                    array_push( $collect_reps_id, $rep->id);
+
+                    array_push( $collect_reps , [ 
+                        'txt' => 'a la date : '.$request->date . ' '. Configuration::hours( $hour),
+                        'link' => route('reps.show',$rep->id )
+                     ] );
+                }
+
+
+                
+                $reps = Rep::whereIn('id', $collect_reps_id)->paginate(9);
+
+
+                return view('back.rep.index', compact('reps') );
+               
+
+            }
+
+            
+            
         }else{
-            return ':/';
+            return back()->withInput();
         }
+
+
+
+        //foreach(){
+
+        //}
 
     }
 
@@ -208,6 +267,7 @@ class RepController extends Controller
         if(count($res) > 0) {
 
             $res->delete();
+
 
             
 
