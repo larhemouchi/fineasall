@@ -64,6 +64,10 @@ Route::get('/salle-sieges-info/{rep}', 'SalleController@siegesInfo')->name('sall
 
 Route::resource('salles', 'SalleController');
 
+Route::post('/rep-pre-form-insert', 'RepController@preFormInsert')->name('reps.pre-form-insert');
+
+Route::post('/rep-insert', 'RepController@insert')->name('reps.insert');
+
 Route::resource('reps', 'RepController');
 
 Auth::routes();

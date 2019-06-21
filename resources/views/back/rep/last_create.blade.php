@@ -18,7 +18,7 @@ Modifier les informations d'un représentation
                 <p class="card-text">
 
 
-                  {!! Form::open(['route' => ['reps.pre-form-insert' ], 'method' => 'POST' ]) !!}
+                  {!! Form::open(['route' => ['reps.store' ], 'method' => 'POST' ]) !!}
                   {{ csrf_field() }}
 
                   <div class="form-group {{$errors->get('num')? 'has-error' : ''}}   ">
@@ -94,6 +94,8 @@ Modifier les informations d'un représentation
 
           <div class="form-group">
             <label for="heures">Heures</label>
+
+                
 
                 {{ Form::select('heures[]', Configuration::hours() , null , ['required' => true, 'class' => 'form-control' , 'id' => 'heures', 'multiple' => true ]) }}
 

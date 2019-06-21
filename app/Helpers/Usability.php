@@ -5,6 +5,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Optional;
 use Session;
 use File;
+use App\{
+	Rep
+};
+use Carbon\Carbon;
 
 /*
 
@@ -14,6 +18,82 @@ function cacul_pourcentage($nombre,$total,$pourcentage)
   return round($resultat); // Arrondi la valeur
 }
 */
+
+
+
+
+class Reptool{
+
+    public static function  store($prix, $theatre_id, $salle_id, $date, $hours)
+    {
+
+
+
+
+        $collect_reps = [];
+        $collect_reps_id = [];
+
+
+
+        if( isset($hours ) ){
+
+
+            foreach( $hours as $hour ){
+
+
+
+
+                $date_houre = Carbon::parse($date . ' '. Configuration::hours( $hour ) ) ;
+
+                
+
+                $rep = Rep::create([
+
+                    'prix' => $prix,
+                    'theatre_id' => $theatre_id,
+                    'salle_id' => $salle_id,
+                    'dateheure' => $date_houre
+
+                ]);
+
+                if(!$rep){
+
+                    continue;
+
+                }else{
+
+                    array_push( $collect_reps_id, $rep->id);
+
+                    array_push( $collect_reps , [ 
+                        'txt' => 'a la date : '.$date . ' '. Configuration::hours( $hour),
+                        'link' => route('reps.show',$rep->id )
+                     ] );
+                }
+
+               
+
+            }
+
+            return $collect_reps_id;
+
+            
+            
+        }else{
+            return back()->withInput();
+        }
+
+
+
+    }
+
+}
+
+
+
+
+
+
+
 
 class Configuration{
 

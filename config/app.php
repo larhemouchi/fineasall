@@ -289,6 +289,7 @@ return [
         'Img' => App\Helpers\Usability\Img::class,
         'Voiding' => App\Helpers\Usability\Voiding::class,
         'Configuration' => App\Helpers\Usability\Configuration::class,
+        'Reptool' => App\Helpers\Usability\Reptool::class,
 
     ],
 

@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use Configuration;
+use Reptool;
+
 
 class RepController extends Controller
 {
@@ -94,6 +96,92 @@ class RepController extends Controller
 
 
         return view('back.rep.create', compact('theatres', 'salles', 'dt'));
+    }
+
+
+    public function preFormInsert(Request $request)
+    {
+
+
+
+
+
+
+
+        $salles = Salle::get(['id', 'nom'])->pluck('nom', 'id');
+
+        $salle_selected = $request->salle_id;
+        $theatres = Theatre::get(['id', 'titre'])->pluck('titre', 'id');
+
+        $theatre_selected = $request->theatre_id;
+
+
+
+        $dt = Carbon::parse( $request->date );
+
+        //$dt = $dt->format('Y-m-d\TH:i:s');
+        $dt = $dt->format('Y-m-d');
+
+        $howmany = $request->num;
+
+
+        $selected_times = $request->heures;
+
+        $price = $request->prix;
+
+
+        //dd( $selected_times);
+
+
+
+        return view('back.rep.pre_form_insert', compact('theatres', 'salles', 'dt', 'howmany', 'salle_selected', 'theatre_selected', 'selected_times', 'price'));
+
+    }
+
+    
+
+    public function insert(Request $request){
+
+        $my_form = $request->myForm;
+
+        //dd( $my_form);
+
+        $items_count = count( $request->myForm['prix'] );
+
+
+        $collect_reps = [];
+
+
+        $reps;
+
+
+        foreach( range(1,$items_count ) as $num ){
+
+            //store($prix, $theatre_id, $salle_id, $date, $hours)
+
+
+
+
+            $reps_array = Reptool::store(  
+                $my_form['prix'][$num],
+                $my_form['theatre_id'][$num],
+                $my_form['salle_id'][$num],
+                $my_form['date'][$num],
+                $my_form['hours'][$num] 
+            );
+
+
+            array_push( $collect_reps, $reps_array );
+
+
+
+        }
+
+
+        $reps = Rep::whereIn('id', $collect_reps )->paginate(9);
+
+
+        return view('back.rep.index', compact('reps') );
     }
 
     /**
